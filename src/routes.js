@@ -9,5 +9,7 @@ router.get('/pacientes', PacienteController.buscarTodos);
 router.get('/paciente/:id', PacienteController.buscarUm);
 //aqui inserimos um paciente no db
 router.post('/paciente', PacienteController.inserir);
+//aqui alteramos um paciente no db
+router.put('/paciente/:id', PacienteController.alterar);
 
 module.exports = router;

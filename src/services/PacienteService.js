@@ -28,5 +28,15 @@ module.exports = {
                 aceito(results.insertId);
             });
         });
+    },
+    alterar: (id, nome, estado, prioridade) =>{
+        return new Promise((aceito, rejeitado) =>{
+            db.query('UPDATE pacientes SET nome = ?, status = ?, prioridade = ? WHERE id = ?', [nome, estado, prioridade, id] , (error, results)=>{
+                if(error){
+                    rejeitado(error); return; }
+                aceito(results);
+                
+            });
+        });
     }
 };
