@@ -20,5 +20,13 @@ module.exports = {
                 }
             });
         });
+    },
+    inserir: (nome, estado, prioridade) =>{
+        return new Promise((aceito, rejeitado) =>{
+            db.query('INSERT INTO pacientes (nome, status, prioridade) VALUES (?, ?, ?)', [nome, estado, prioridade] , (error, results)=>{
+                if(error){ rejeitado(error); return; }
+                aceito(results.insertId);
+            });
+        });
     }
 };

@@ -27,5 +27,26 @@ module.exports = {
         }
         console.log(json);
         res.json(json);
+    },
+    inserir: async (req, res)=>{
+        let json = {error:'', result:{}};
+
+        let nome = req.body.nome;
+        let estado = req.body.estado;
+        let prioridade = req.body.prioridade;
+        
+        if(nome && estado && prioridade){
+            let pacienteId = await PacienteService.inserir(nome, estado, prioridade);
+            json.result = {
+                id: pacienteId,
+                nome,
+                estado,
+                prioridade
+            };
+        }else{
+            json.error = 'Campos não enviados'
+        }
+
+        res.json(json);
     }
 }

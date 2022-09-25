@@ -7,5 +7,7 @@ const PacienteController = require('./controllers/PacienteController');
 router.get('/pacientes', PacienteController.buscarTodos);
 //aqui buscamos apenas um paciente cadastrado no db
 router.get('/paciente/:id', PacienteController.buscarUm);
+//aqui inserimos um paciente no db
+router.post('/paciente', PacienteController.inserir);
 
 module.exports = router;
