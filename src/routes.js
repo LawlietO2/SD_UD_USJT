@@ -11,5 +11,7 @@ router.get('/paciente/:id', PacienteController.buscarUm);
 router.post('/paciente', PacienteController.inserir);
 //aqui alteramos um paciente no db
 router.put('/paciente/:id', PacienteController.alterar);
+//aqui deletamos um paciente no db
+router.delete('/paciente/:id', PacienteController.excluir);
 
 module.exports = router;

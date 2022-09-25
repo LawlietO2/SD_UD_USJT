@@ -70,5 +70,12 @@ module.exports = {
         }
 
         res.json(json);
+    },
+    excluir: async (req, res)=>{
+        let json = {error:'', result:{}};
+
+        let paciente = await PacienteService.excluir(req.params.id);
+
+        res.json(json);
     }
 }
