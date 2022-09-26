@@ -1,4 +1,6 @@
-Amanda Alves de Oliveira - RA:820135445 <br>
+## Integrantes
+
+Amanda Alves de Oliveira - RA: 820135445 <br>
 Frederico Kenji Kaneto Monma - RA: 820148078 <br>
 Jedaias Farias de Jesus - RA: 820146360 <br>
 Mateus Oliveira Souza - RA: 820110893 <br>
