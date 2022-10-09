@@ -1,0 +1,42 @@
+<h1 mat-dialog-title>Adicionar paciente</h1>
+<div mat-dialog-content>
+    <form [formGroup] = "pacienteForm">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Nome</mat-label>
+            <input formControlName="nome" matInput placeholder="Ex. Joaquin">
+          </mat-form-field>
+    
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Sobrenome</mat-label>
+            <input formControlName="sobrenome" matInput placeholder="Ex. Rodolfo">
+          </mat-form-field>
+    
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Sexo</mat-label>
+            <mat-select formControlName="sexo" placeholder="Sexo">
+                <mat-option value="Masculino">Masculino</mat-option>
+                <mat-option value="Feminino">Feminino</mat-option>
+                <mat-option value="Outro">Outro</mat-option>
+            </mat-select>
+          </mat-form-field>
+    
+          <mat-form-field appearance="fill">
+            <mat-label>Data de Nascimento</mat-label>
+            <input formControlName="dataNasc" matInput [matDatepicker]="picker">
+            <mat-hint>DD/MM/AAAA</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+    
+        <h2 style="margin-top: 20px">Prioridade</h2>
+          <mat-radio-group formControlName="prioridade" class="example-radio-group">
+            <mat-radio-button *ngFor="let prioridade of listaPrioridade" [value] = "prioridade" class="example-radio-button">
+                {{prioridade}}
+            </mat-radio-button>
+          </mat-radio-group>
+    </form>
+</div>
+<div mat-dialog-action [align] = "'right'">
+    <button mat-raised-button color="warn" mat-dialog-close>Fechar</button>
+    <button style="margin-left: 10px;" mat-raised-button color="primary" mat-dialog-close>Salvar</button>
+</div>
