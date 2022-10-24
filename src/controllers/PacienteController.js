@@ -11,7 +11,8 @@ module.exports = {
                 id: pacientes[i].id,
                 nome: pacientes[i].nome,
                 estado: pacientes[i].status,
-                prioridade: pacientes[i].prioridade
+                prioridade: pacientes[i].prioridade,
+                data: pacientes[i].datalocal
             });
         }
     res.json(json);
@@ -32,16 +33,18 @@ module.exports = {
         let json = {error:'', result:{}};
 
         let nome = req.body.nome;
-        let estado = req.body.estado;
+        let estado = "Pendente";
         let prioridade = req.body.prioridade;
-        
-        if(nome && estado && prioridade){
-            let pacienteId = await PacienteService.inserir(nome, estado, prioridade);
+        let data = new Date();
+
+        if(nome && estado && prioridade && data){
+            let pacienteId = await PacienteService.inserir(nome, estado, prioridade, data);
             json.result = {
                 id: pacienteId,
                 nome,
                 estado,
-                prioridade
+                prioridade,
+                data
             };
         }else{
             json.error = 'Campos não enviados'
@@ -56,14 +59,16 @@ module.exports = {
         let nome = req.body.nome;
         let estado = req.body.estado;
         let prioridade = req.body.prioridade;
-        
-        if(id && nome && estado && prioridade){
-            await PacienteService.alterar(id, nome, estado, prioridade);
+        let date = new Date();
+
+        if(id && nome && estado && prioridade && data){
+            await PacienteService.alterar(id, nome, estado, prioridade, data);
             json.result = {
                 id,
                 nome,
                 estado,
-                prioridade
+                prioridade,
+                data
             };
         }else{
             json.error = 'Campos não enviados'

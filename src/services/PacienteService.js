@@ -21,17 +21,17 @@ module.exports = {
             });
         });
     },
-    inserir: (nome, estado, prioridade) =>{
+    inserir: (nome, estado, prioridade, data) =>{
         return new Promise((aceito, rejeitado) =>{
-            db.query('INSERT INTO pacientes (nome, status, prioridade) VALUES (?, ?, ?)', [nome, estado, prioridade] , (error, results)=>{
+            db.query('INSERT INTO pacientes (nome, status, prioridade, datalocal) VALUES (?, ?, ?, ?)', [nome, estado, prioridade, data] , (error, results)=>{
                 if(error){ rejeitado(error); return; }
                 aceito(results.insertId);
             });
         });
     },
-    alterar: (id, nome, estado, prioridade) =>{
+    alterar: (id, nome, estado, prioridade, data) =>{
         return new Promise((aceito, rejeitado) =>{
-            db.query('UPDATE pacientes SET nome = ?, status = ?, prioridade = ? WHERE id = ?', [nome, estado, prioridade, id] , (error, results)=>{
+            db.query('UPDATE pacientes SET nome = ?, status = ?, prioridade = ? datalocal = ? WHERE id = ?', [nome, estado, prioridade, data, id] , (error, results)=>{
                 if(error){
                     rejeitado(error); return; }
                 aceito(results);
