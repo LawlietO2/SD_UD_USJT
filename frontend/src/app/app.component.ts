@@ -8,6 +8,8 @@ export interface pacientes {
   prioridade: string;
 }
 
+// teste
+
 const ELEMENT_DATA: pacientes[] = [
 
 ];
