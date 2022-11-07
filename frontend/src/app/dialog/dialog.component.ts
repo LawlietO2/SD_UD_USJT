@@ -12,7 +12,10 @@ export class DialogComponent implements OnInit {
 
   listaPrioridade = ["Não Urgente", "Pouco Urgente", "Urgente", "Emergência"];
   pacienteForm !: FormGroup;  
-  constructor(private formBuilder : FormBuilder, private api : ApiService, private dialogRef : MatDialogRef<DialogComponent>){
+  constructor(
+    private formBuilder : FormBuilder, 
+    private api : ApiService, 
+    private dialogRef : MatDialogRef<DialogComponent>){
 
   }
 
@@ -28,6 +31,7 @@ export class DialogComponent implements OnInit {
       .subscribe({
         next:(res)=>{
           alert("Paciente adicionado");
+          console.log(this.pacienteForm.value)
           this.pacienteForm.reset();
           this.dialogRef.close();
         },
