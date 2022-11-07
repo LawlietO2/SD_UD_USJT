@@ -4,10 +4,11 @@ import { ConsultaComponent } from './consulta/consulta.component';
 import { HomeComponent } from './home/home.component';
 import { ListaComponent } from './lista/lista.component';
 
+
 const routes: Routes = [
   // { path: '', component: HomeComponent },
   { path: '', component: ListaComponent },
-  {path: 'consulta', component: ConsultaComponent}
+  { path: 'consulta', component: ConsultaComponent}
 ];
 
 
