@@ -12,7 +12,10 @@ export class ApiService {
     return this.http.post<any>("http://localhost:3000/api/paciente",data)
     
   }
-  getPaciente(){
+  getPacientes(){
+    console.log(`${this.http.get<any>("http://localhost:3000/api/pacientes/")}`);
     return this.http.get<any>("http://localhost:3000/api/pacientes/")
   }
+
+
 }
