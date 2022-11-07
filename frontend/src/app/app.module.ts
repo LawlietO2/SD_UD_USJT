@@ -21,12 +21,19 @@ import {MatTable, MatTableModule} from '@angular/material/table';
 import { ServicesComponent } from './services/services.component'; 
 import { HttpClientModule } from '@angular/common/http';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { ListaComponent } from './lista/lista.component'; 
+import { ConsultaComponent } from './consulta/consulta.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     DialogComponent,
-    ServicesComponent
+    ServicesComponent,
+    ListaComponent,
+    ConsultaComponent
+
   ],
   imports: [
     BrowserModule,
@@ -46,7 +53,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     FormsModule,
     MatTableModule,
     HttpClientModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'}

@@ -1,7 +1,7 @@
 const db = require('../db');
 
 module.exports = {
-    buscarTodos: () =>{
+    buscarPosicaoPaciente: () =>{
         return new Promise((aceito, rejeitado) =>{
             db.query('SELECT * FROM pacientes WHERE status = ?', ['pendente'] , (error, results)=>{
                 if(error){ rejeitado(error); return; }

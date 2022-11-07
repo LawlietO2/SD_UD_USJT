@@ -50,24 +50,24 @@ module.exports = {
             };
            
 
-            // Step 1: Create Connection
-             amqp.connect('amqp://localhost', (connError, connection) => {
-            if (connError) {
-                throw connError;
-            }
-            // Step 2: Create Channel
-            connection.createChannel((channelError, channel) => {
-                if (channelError) {
-                    throw channelError;
-                }
-                // Step 3: Assert Queue
-                const QUEUE = 'pacientes'
-                channel.assertQueue(QUEUE);
-                // Step 4: Send message to queue
-                channel.sendToQueue(QUEUE, Buffer.from('Mensagem de teste do barramento'));
-                console.log(`Message send ${QUEUE}`);
-              })
-            })
+            // // Step 1: Create Connection
+            //  amqp.connect('amqp://localhost', (connError, connection) => {
+            // if (connError) {
+            //     throw connError;
+            // }
+            // // Step 2: Create Channel
+            // connection.createChannel((channelError, channel) => {
+            //     if (channelError) {
+            //         throw channelError;
+            //     }
+            //     // Step 3: Assert Queue
+            //     const QUEUE = 'pacientes'
+            //     channel.assertQueue(QUEUE);
+            //     // Step 4: Send message to queue
+            //     channel.sendToQueue(QUEUE, Buffer.from('Mensagem de teste do barramento'));
+            //     console.log(`Message send ${QUEUE}`);
+            //   })
+            // })
             
         }else{
             json.error = 'Campos não enviados'
@@ -82,7 +82,7 @@ module.exports = {
         let nome = req.body.nome;
         let estado = req.body.estado;
         let prioridade = req.body.prioridade;
-        let date = new Date();
+        let data = new Date();
 
         if(id && nome && estado && prioridade && data){
             await PacienteService.alterar(id, nome, estado, prioridade, data);

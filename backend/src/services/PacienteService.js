@@ -31,7 +31,7 @@ module.exports = {
     },
     alterar: (id, nome, estado, prioridade, data) =>{
         return new Promise((aceito, rejeitado) =>{
-            db.query('UPDATE pacientes SET nome = ?, status = ?, prioridade = ? datalocal = ? WHERE id = ?', [nome, estado, prioridade, data, id] , (error, results)=>{
+            db.query('UPDATE pacientes SET nome = ?, status = ?, prioridade = ?, datalocal = ? WHERE id = ?', [nome, estado, prioridade, data, id] , (error, results)=>{
                 if(error){
                     rejeitado(error); return; }
                 aceito(results);

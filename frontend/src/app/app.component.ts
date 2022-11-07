@@ -1,18 +1,4 @@
-import { Component } from '@angular/core';
-import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { DialogComponent } from './dialog/dialog.component';
-
-export interface pacientes {
-  nome: string;
-  data: Date; //Mudar para Date
-  prioridade: string;
-}
-
-// teste
-
-const ELEMENT_DATA: pacientes[] = [
-
-];
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -20,19 +6,12 @@ const ELEMENT_DATA: pacientes[] = [
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
-  title = 'interface';
+export class AppComponent implements OnInit {
 
-  constructor(private dialog : MatDialog){
-
+  constructor(
+    ){
+  }
+  ngOnInit(): void {
   }
 
-  displayedColumns: string[] = ['prioridade', 'nome'];
-  dataSource = ELEMENT_DATA;
-  
-  openDialog() {
-    this.dialog.open(DialogComponent, {
-      width: '30%'
-    });
-  }
 }
