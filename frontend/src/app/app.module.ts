@@ -22,13 +22,18 @@ import { ServicesComponent } from './services/services.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { ListaComponent } from './lista/lista.component'; 
+import { ConsultaComponent } from './consulta/consulta.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     DialogComponent,
-    ServicesComponent
+    ServicesComponent,
+    ListaComponent,
+    ConsultaComponent
+
   ],
   imports: [
     BrowserModule,

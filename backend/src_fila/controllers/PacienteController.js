@@ -2,52 +2,55 @@ const PacienteService = require('../services/PacienteService');
 const amqp = require('amqplib/callback_api');
 
 module.exports = {
-    buscarTodosOrdenado: async (req, res)=>{
+    buscarPosicaoPaciente: async (req, res)=>{
         let json = {error:'', result:[]};
        
-        let pacientes = await PacienteService.buscarTodos();
+        let pacientes = await PacienteService.buscarPosicaoPaciente();
         
         // Step 1: Create Connection
-        amqp.connect('amqp://localhost', (connError, connection) => {
-            if (connError) {
-                throw connError;
-            }
-            // Step 2: Create Channel
-            connection.createChannel((channelError, channel) => {
-                if (channelError) {
-                    throw channelError;
-                }
-                // Step 3: Assert Queue
-                const QUEUE = 'pacientes'
-                channel.assertQueue(QUEUE);
-                // Step 4: Receive Messages
-                channel.consume(QUEUE, (msg) => {
-                    console.log(`Message received: ${msg.content.toString()}`)
+        // amqp.connect('amqp://localhost', (connError, connection) => {
+        //     if (connError) {
+        //         throw connError;
+        //     }
+        //     // Step 2: Create Channel
+        //     connection.createChannel((channelError, channel) => {
+        //         if (channelError) {
+        //             throw channelError;
+        //         }
+        //         // Step 3: Assert Queue
+        //         const QUEUE = 'pacientes'
+        //         channel.assertQueue(QUEUE);
+        //         // Step 4: Receive Messages
+        //         channel.consume(QUEUE, (msg) => {
+        //             console.log(`Message received: ${msg.content.toString()}`)
                   
-                }, {
-                    noAck: true
-                })
-            })
-        })
+        //         }, {
+        //             noAck: true
+        //         })
+        //     })
+        // })
         let id = req.params.id;
        
           for(let i in pacientes){
             switch (pacientes[i].prioridade) {
                 case "critica":
-                pacientes[i].prioridadeHelper = 1;
+                  pacientes[i].prioridadeHelper = 1;
                   break;
                 case "alta":
-                pacientes[i].prioridadeHelper = 2;
+                  pacientes[i].prioridadeHelper = 2;
                   break;
                 case "normal":
-                pacientes[i].prioridadeHelper = 3;
+                  pacientes[i].prioridadeHelper = 3;
                   break;
                 case "baixa":
-                pacientes[i].prioridadeHelper = 4;
+                  pacientes[i].prioridadeHelper = 4;
                   break;
                 default:
+                  pacientes[i].prioridadeHelper = 4;
                   break;
               }
+              console.log(`ID   [${pacientes[i].id}]`);
+              console.log(`AQUI [${pacientes[i].prioridadeHelper}]`);
         }
         pacientes.sort(function(a,b) { 
               return a.datalocal.getTime() - b.datalocal.getTime(); 
@@ -55,6 +58,9 @@ module.exports = {
         pacientes.sort(function(a,b) { 
             return a.prioridadeHelper - b.prioridadeHelper; 
         });
+
+        console.log(`PACIENTES [${pacientes[1].id}]`);
+
         //critica 1
         //alta    2
         //normal  3
@@ -62,9 +68,14 @@ module.exports = {
         const index = pacientes.findIndex(object => {
             return object.id == id;
           });   
+
+          console.log(`index [${index}]`);
+          
           json.result.push({
             queueId: index + 1
         });
+
+        
     res.json(json);
     },
     buscarTodos: async (req, res)=>{
