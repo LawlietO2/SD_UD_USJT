@@ -30,7 +30,15 @@ module.exports = {
         //     })
         // })
         let id = req.params.id;
+        let nome;
        
+        for(let i in pacientes){
+            let wrk = pacientes[i].id
+            if(wrk == id){
+                nome = pacientes[i].nome;
+            }
+          }
+
           for(let i in pacientes){
             switch (pacientes[i].prioridade) {
                 case "critica":
@@ -49,8 +57,6 @@ module.exports = {
                   pacientes[i].prioridadeHelper = 4;
                   break;
               }
-              console.log(`ID   [${pacientes[i].id}]`);
-              console.log(`AQUI [${pacientes[i].prioridadeHelper}]`);
         }
         pacientes.sort(function(a,b) { 
               return a.datalocal.getTime() - b.datalocal.getTime(); 
@@ -58,8 +64,6 @@ module.exports = {
         pacientes.sort(function(a,b) { 
             return a.prioridadeHelper - b.prioridadeHelper; 
         });
-
-        console.log(`PACIENTES [${pacientes[1].id}]`);
 
         //critica 1
         //alta    2
@@ -69,9 +73,8 @@ module.exports = {
             return object.id == id;
           });   
 
-          console.log(`index [${index}]`);
-          
           json.result.push({
+            nome: nome,
             queueId: index + 1
         });
 
