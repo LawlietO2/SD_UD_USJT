@@ -73,10 +73,10 @@ module.exports = {
             return object.id == id;
           });   
 
-          json.result.push({
+          json.result = {
             nome: nome,
             queueId: index + 1
-        });
+        };
 
         
     res.json(json);
@@ -84,7 +84,7 @@ module.exports = {
     buscarTodos: async (req, res)=>{
         let json = {error:'', result:[]};
 
-        let pacientes = await PacienteService.buscarTodos();
+        let pacientes = await PacienteService.buscarPosicaoPaciente();
 
         for(let i in pacientes){
             json.result.push({

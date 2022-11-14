@@ -52,11 +52,11 @@ export class ConsultaComponent implements OnInit {
      next: (res) => {
 
       this.dataSource = res.result;
-      
+
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      this.nome = res.result[0].nome;
-      this.posicao = res.result[0].queueId;
+      this.nome = res.result.nome;
+      this.posicao = res.result.queueId;
      },
      error: (err) => {
        alert("Error while fetching the Records")
