@@ -24,6 +24,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { ListaComponent } from './lista/lista.component'; 
 import { ConsultaComponent } from './consulta/consulta.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { ConsultaComponent } from './consulta/consulta.component';
     DialogComponent,
     ServicesComponent,
     ListaComponent,
-    ConsultaComponent
+    ConsultaComponent,
+    LoginComponent
 
   ],
   imports: [
