@@ -32,11 +32,13 @@ export class LoginComponent implements OnInit {
       let senhawrk = this.loginForm.value.senha;
       var encrypted = this.api.encodepass('77qte87gybv', senhawrk);
 
+      console.log("Entrei aqui")
       json = {
         login: this.loginForm.value.login,
         senha: encrypted
       };
 
+      console.log("Entrei aqui 2")
       this.api.login(json)
       .subscribe({
         next:(res)=>{

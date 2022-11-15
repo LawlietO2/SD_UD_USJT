@@ -38,9 +38,12 @@ module.exports = {
         let estado = "Pendente";
         let prioridade = req.body.prioridade;
         let data = new Date();
+        const uid = new ShortUniqueId({ length: 10 });
+        let consulta_cod = uid(); // p0ZoB1FwH6
+        let especialidade = req.body.especialidade;
 
         if(nome && estado && prioridade && data){
-            let pacienteId = await PacienteService.inserir(nome, estado, prioridade, data);
+            let pacienteId = await PacienteService.inserir(nome, estado, prioridade, data, consulta_cod, especialidade);
             json.result = {
                 id: pacienteId,
                 nome,
