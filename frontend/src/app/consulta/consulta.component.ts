@@ -36,7 +36,6 @@ export class ConsultaComponent implements OnInit {
     private api : ApiService,
     private route: ActivatedRoute) {
 
-      console.log('Called Constructor');
       this.route.queryParams.subscribe(params => {
           this.id = params['id'];
     });

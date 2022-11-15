@@ -56,6 +56,7 @@ import { LoginComponent } from './login/login.component';
     MatTableModule,
     HttpClientModule,
     MatPaginatorModule,
+
     MatSortModule
   ],
   providers: [
