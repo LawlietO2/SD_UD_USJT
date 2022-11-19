@@ -23,6 +23,16 @@ mat-form-field{
   /* box-shadow: 0 10px 10px 0 red; */
 }
 
+.alert-danger {
+  color: #994442;
+  border-color: #fccac7;
+}
+.alert-danger hr {
+  border-top-color: #fbb3af;
+}
+.alert-danger .alert-link {
+  color: #753433;
+}
 
 .logoBacteria{
   position: absolute;
@@ -32,9 +42,6 @@ mat-form-field{
   top: 80px;
 
 }
-
-
-
 
 .retanguloRoxo{
   position: absolute;
