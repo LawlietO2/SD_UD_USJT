@@ -30,8 +30,9 @@ export class DialogComponent implements OnInit {
       this.api.postPaciente(this.pacienteForm.value)    
       .subscribe({
         next:(res)=>{
-          alert("Paciente adicionado");
+          alert("Paciente adicionado, o codigo de consulta é " + res.result.consulta_cod);
           console.log(this.pacienteForm.value)
+          console.log()
           this.pacienteForm.reset();
           this.dialogRef.close();
         },

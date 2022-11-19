@@ -70,7 +70,7 @@ module.exports = {
         //normal  3
         //baixa   4   
         const index = pacientes.findIndex(object => {
-            return object.id == id;
+            return object.consulta_cod == id;
           });   
 
           json.result = {
