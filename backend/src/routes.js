@@ -14,4 +14,7 @@ router.put('/paciente/:id', PacienteController.alterar);
 //aqui deletamos um paciente no db
 router.delete('/paciente/:id', PacienteController.excluir);
 
+//aqui inserimos um paciente no db
+router.post('/eventos', PacienteController.receberEvento);
+
 module.exports = router;
