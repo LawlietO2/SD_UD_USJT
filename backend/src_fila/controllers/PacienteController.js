@@ -7,33 +7,14 @@ module.exports = {
        
         let pacientes = await PacienteService.buscarPosicaoPaciente();
         
-        // Step 1: Create Connection
-        // amqp.connect('amqp://localhost', (connError, connection) => {
-        //     if (connError) {
-        //         throw connError;
-        //     }
-        //     // Step 2: Create Channel
-        //     connection.createChannel((channelError, channel) => {
-        //         if (channelError) {
-        //             throw channelError;
-        //         }
-        //         // Step 3: Assert Queue
-        //         const QUEUE = 'pacientes'
-        //         channel.assertQueue(QUEUE);
-        //         // Step 4: Receive Messages
-        //         channel.consume(QUEUE, (msg) => {
-        //             console.log(`Message received: ${msg.content.toString()}`)
-                  
-        //         }, {
-        //             noAck: true
-        //         })
-        //     })
-        // })
+
+        console.log("==================================================")
+        console.log(pacientes)
         let id = req.params.id;
         let nome;
        
         for(let i in pacientes){
-            let wrk = pacientes[i].id
+            let wrk = pacientes[i].consulta_cod
             if(wrk == id){
                 nome = pacientes[i].nome;
             }
@@ -73,13 +54,17 @@ module.exports = {
             return object.consulta_cod == id;
           });   
 
+          console.log("AQUIII")
+          
+
           json.result = {
             nome: nome,
             queueId: index + 1
         };
+        console.log(json.result)
 
         
-    res.json(json);
+        res.json(json);
     },
     buscarTodos: async (req, res)=>{
         let json = {error:'', result:[]};

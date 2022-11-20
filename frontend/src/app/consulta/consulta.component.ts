@@ -24,7 +24,7 @@ const ELEMENT_DATA: paciente[] = [
 })
 export class ConsultaComponent implements OnInit {
 
-  pacienteForm !: FormGroup;  
+  pacienteForm !: FormGroup;
   nome : string = "";
   posicao : string = "";
   id: number = 0;
@@ -34,7 +34,7 @@ export class ConsultaComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(
-    private formBuilder : FormBuilder, 
+    private formBuilder : FormBuilder,
     private dialog : MatDialog,
     private api : ApiService,
     private route: ActivatedRoute) {
@@ -44,29 +44,25 @@ export class ConsultaComponent implements OnInit {
     this.pacienteForm = this.formBuilder.group({
       Cod : ['',Validators.required]
     })
-    
+
   }
-  
-   
-  
+
+
+
   getPosicaoPaciente(){
-    
+
     this.id = this.pacienteForm.value.Cod;
-  
-    let url = new URL('http://localhost:4200/consulta?');
-    let params = new URLSearchParams(url.search);
 
-    // Add a third parameter.
-    params.set('id', this.id.toString());
-    window.history.pushState('new','title',url.toString() + params.toString())
 
+    console.log(`ID [${this.id}]`);
     this.api.getPosicaoPaciente(this.id)
     .subscribe({
      next: (res) => {
-  
+
       console.log(res.result);
+
       this.dataSource = res.result;
-  
+
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
       this.nome = res.result.nome;
@@ -77,5 +73,5 @@ export class ConsultaComponent implements OnInit {
      }
    })
  }
- 
+
 }
