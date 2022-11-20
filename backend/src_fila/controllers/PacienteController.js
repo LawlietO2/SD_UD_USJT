@@ -51,10 +51,7 @@ module.exports = {
         const index = pacientes.findIndex(object => {
             return object.consulta_cod == id;
           });   
-
-          console.log("AQUIII")
           
-
           json.result = {
             nome: nome,
             queueId: index + 1
