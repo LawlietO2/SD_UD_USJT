@@ -1,5 +1,39 @@
-<p id="Nome">{{especialidade}}</p>
-<!--MUDAR PARA VARIÁVEL-->
+<header class="header">
+    <h1 class="acompanhamentoTitulo">
+        <span class="BalooFont">acompanhamento </span>
+    </h1>
+</header>
 
-<!--MUDAR PARA VARIÁVEL-->
+<mat-toolbar>
+    <button mat-icon-button class="buttonHeader">
+        <img src="../../assets/img/desenhoHeader.png" class="logoHeader" />
+    </button>
+    <span class="example-spacer"></span>
+</mat-toolbar>
+
+<table class="Fila">
+    <h1 id="FilaTitulo"> 
+        <p class="RobotoFont"> <b>Fila</b> </p>      
+    </h1>
+    <p class="linhaFila"></p>
+</table>
+
+
+
+<form class="forms">
+    <h1>
+        <p id="Nome" class="RobotoFont">
+            <b> Especialidade: </b> {{especialidade}}
+            <br>
+            <b> Paciente:</b> Mateus
+    </h1>
+    <p class="linhaFicha"></p>
+    <div class="campo"><div>
+    <button class="botaoReceita"> 
+        <h1 class="RobotoFont"> Gerar Receita </h1>
+     </button>
+ 
+<form>
+
+
 <router-outlet></router-outlet>

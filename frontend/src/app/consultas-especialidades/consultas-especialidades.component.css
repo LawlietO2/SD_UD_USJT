@@ -1,12 +1,142 @@
-#Nome{
+#Nome {
   position: absolute;
   top: 5%;
-  left: 50%;
-  transform: translate(-50%);
-  text-align: center;
-  padding: 16px 48px;
-  border: 4px solid black;
-  font-size: 36px;
+  left: 5%;
+  font-size: 18px;
   color: black;
   max-width: max-content;
+}
+
+#FilaTitulo {
+  position: absolute;
+  top: 5%;
+  left: 45%;
+  font-size: 18px;
+  color: black;
+  max-width: max-content;
+}
+
+.linhaFila {
+  position: absolute;
+  width: 351px;
+  height: 0px;
+  border: 0.1mm solid #000000;
+  top: 12%;
+}
+
+.linhaFicha {
+  position: absolute;
+  width: 845px;
+  height: 0px;
+  border: 0.1mm solid #000000;
+  top: 18%;
+}
+
+.header {
+  position: absolute;
+  left: 0px;
+  width: 100%;
+  height: 100px;
+  margin: 0px;
+  padding: 0px;
+  background: #4A518F;
+  font-size: 50px;
+
+}
+
+.acompanhamentoTitulo {
+  position: absolute;
+  top: 35px;
+  left: 150px;
+  margin-left: 0px;
+  margin-right: 0px;
+  color: antiquewhite !important;
+  font-family: 'Baloo 2', normal;
+  font-size: 40px;
+}
+
+.BalooFont {
+  font-family: 'Baloo Regular';
+  src: url(../../assets/Baloo-Regular.ttf) format('opentype');
+}
+
+.RobotoFont {
+  font-family: 'Roboto Medium';
+  src: url(../../assets/Roboto-Medium.ttf) format('opentype');
+  font-size: 18px;
+}
+
+.logoHeader {
+  position: absolute;
+  top: 5px;
+  left: 2px;
+  height: 80px;
+  width: 90px;
+
+}
+
+.buttonHeader {
+  position: absolute;
+  top: 5px;
+  left: 30px;
+  height: 90px;
+  width: 90px;
+  border-radius: 100px;
+
+}
+
+
+.forms {
+  position: absolute;
+  width: 848px;
+  height: 575px;
+  left: 40%;
+  top: 186px;
+
+  background: #D9D9D9;
+
+
+}
+
+.campo {
+  position: absolute;
+  width: 742px;
+  height: 330px;
+  left: 50px;
+  top: 140px;
+
+  background: #FFFFFF;
+}
+
+.botaoReceita {
+
+  position: absolute;
+  width: 150px;
+  height: 32px;
+  left: 500px;
+  top: 370px;
+  background: #a08bff;
+  border-radius: 21.5px;
+  border: none;
+
+}
+
+
+.GerarReceita {
+
+  position: absolute;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-size: 20px;
+  color: #1E1E1E;
+}
+
+.Fila {
+  position: absolute;
+  width: 357px;
+  height: 575px;
+  left: 15%;
+  top: 186px;
+
+  background: #D9D9D9;
 }

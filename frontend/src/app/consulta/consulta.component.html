@@ -1,22 +1,57 @@
-<p id="Nome">{{nome}}</p>
-<!--MUDAR PARA VARIÁVEL-->
-<div id="Posicao">
-  <p>Posição</p>
-  <br />
-  <p id="Fila">#{{posicao}}</p>
-  <!--MUDAR PARA VARIÁVEL-->
-</div>
-<p id="Medico">Médico: Ainda não alocado!</p>
-<!--MUDAR PARA VARIÁVEL-->
-<p id="Cod_consulta">Insira o codigo de consulta</p>
-<!--MUDAR PARA VARIÁVEL-->
-<script type = "text/javascript" src="consulta.component.ts"></script>  
-<form [formGroup] = "pacienteForm">
-<mat-form-field class="example-full-width" appearance="fill">
-  <mat-label>Codigo de consulta</mat-label>
-  <input formControlName="Cod" matInput placeholder="Ex. Joaquin">
-</mat-form-field>
-</form>
-  <button style="margin-left: 10px;" mat-raised-button color="primary" mat-dialog-close (click)="getPosicaoPaciente()"  >Enviar</button>
+<header class="header">
+  <h1 class="posicaoTitulo">
+    <span class="BalooFont">posição </span>
+  </h1>
+</header>
+
+<mat-toolbar>
+  <button mat-icon-button class="buttonHeader">
+    <img src="../../assets/img/desenhoHeader.png" class="logoHeader" />
+  </button>
+  <span class="example-spacer"></span>
+</mat-toolbar>
+
+
+<table class="caixinhaGrande">
+ 
+  <span id="inserir_codigo">
+    <p class="RobotoFont" style="font-size: 40px;"> <b>insira o código de consulta: </b></p>
+  </span>
+
+  <div class="posicaoCaixinha">
+    <form [formGroup]="pacienteForm" style="border: 0;" >    
+        <input formControlName="Cod" matInput placeholder="Ex. AL1Cr0UHrK" class="caixinhaCodigo" >
+    </form>
+  </div>
+
+
+  <button class="botaoOK" mat-dialog-close (click)="getPosicaoPaciente()"> <b> OK </b></button>
+
+  <span class="caixinhaPosicao">
+    <div id="Posicao">
+      <p>Posição</p>
+      <br />
+      <p id="Fila">#{{posicao}}</p>
+    </div>
+  </span>
+
+  <span class="caixinhaPaciente" style="width:436px ;">
+    <span id="paciente"> Paciente:
+      <p id="nomePaciente">{{nome}}</p>
+    </span>
+  </span>
+
+  <span class="caixinhaMedico" style="width:436px ;">
+    <p id="medico"> Médico: </p>
+    <p id="nomeMedico">Ainda não alocado!</p>
+  </span>
+
+</table>
+
+
+
+
+<script type="text/javascript" src="consulta.component.ts"></script>
+
 
 <router-outlet></router-outlet>
