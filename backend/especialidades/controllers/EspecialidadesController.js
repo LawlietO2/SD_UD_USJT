@@ -1,4 +1,4 @@
-const PacienteService = require('../services/PacienteService');
+const PacienteService = require('../services/EspecialidadesService');
 const amqp = require('amqplib/callback_api');
 const ShortUniqueId = require('short-unique-id');
 const axios = require('axios');
@@ -7,7 +7,7 @@ module.exports = {
     buscarTodos: async (req, res)=>{
         let json = {error:'', result:[]};
 
-        let pacientes = await PacienteService.buscarTodos();
+        let pacientes = await EspecialidadeService.buscarTodos();
 
         for(let i in pacientes){
             json.result.push({
@@ -26,7 +26,7 @@ module.exports = {
         let json = {error:'', result:{}};
 
         let id = req.params.id;
-        let paciente = await PacienteService.buscarUm(id);
+        let paciente = await EspecialidadeService.buscarUm(id);
         
         if(paciente){
             json.result = paciente;
@@ -45,7 +45,7 @@ module.exports = {
         let consulta_cod = uid(); // p0ZoB1FwH6
         let especialidades = req.body.especialidade;
         if(nome && estado && prioridade && data){
-            let pacienteId = await PacienteService.inserir(nome, estado, prioridade, data, consulta_cod, especialidades);
+            let pacienteId = await EspecialidadeService.inserir(nome, estado, prioridade, data, consulta_cod, especialidades);
             json.result = {
                 id: pacienteId,
                 nome,
@@ -57,7 +57,7 @@ module.exports = {
             };
            
             //Envia evento ao barramento
-            PacienteService.enviarEvento(json.result); //O barramento devera identificar a inclusão do paciente e realizar a adição do mesmo na tabela de especialidades
+            EspecialidadeService.enviarEvento(json.result); //O barramento devera identificar a inclusão do paciente e realizar a adição do mesmo na tabela de especialidades
             
         }else{
             json.error = 'Campos não enviados'
@@ -75,7 +75,7 @@ module.exports = {
         let data = new Date();
 
         if(id && nome && estado && prioridade && data){
-            await PacienteService.alterar(id, nome, estado, prioridade, data);
+            await EspecialidadeService.alterar(id, nome, estado, prioridade, data);
             json.result = {
                 id,
                 nome,
@@ -92,7 +92,7 @@ module.exports = {
     excluir: async (req, res)=>{
         let json = {error:'', result:{}};
 
-        let paciente = await PacienteService.excluir(req.params.id);
+        let paciente = await EspecialidadeService.excluir(req.params.id);
 
         res.json(json);
     },

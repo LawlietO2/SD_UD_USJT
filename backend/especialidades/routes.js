@@ -1,20 +1,19 @@
 const express = require('express');
 const router = express.Router();
 
-const PacienteController = require('./controllers/PacienteController');
+const EspecialidadesController = require('./controllers/EspecialidadesController');
 
 //aqui buscamos todos os pacientes cadastrados no db
-router.get('/pacientes', PacienteController.buscarTodos);
+router.get('/pacientes', EspecialidadesController.buscarTodos);
 //aqui buscamos apenas um paciente cadastrado no db
-router.get('/paciente/:id', PacienteController.buscarUm);
+router.get('/paciente/:id', EspecialidadesController.buscarUm);
 //aqui inserimos um paciente no db
-router.post('/paciente', PacienteController.inserir);
+router.post('/paciente', EspecialidadesController.inserir);
 //aqui alteramos um paciente no db
-router.put('/paciente/:id', PacienteController.alterar);
+router.put('/paciente/:id', EspecialidadesController.alterar);
 //aqui deletamos um paciente no db
-router.delete('/paciente/:id', PacienteController.excluir);
-
-//aqui inserimos um paciente no db
-router.post('/eventos', PacienteController.receberEvento);//ALTERAR PacienteController para EspecialidadeController
+router.delete('/paciente/:id', EspecialidadesController.excluir);
+//Redirecionamento do barramento apos inclusao de paciente, devemos incluir na base de especialidades.
+router.post('/eventos', EspecialidadesController.receberEvento);//ALTERAR PacienteController para EspecialidadesController
 
 module.exports = router;

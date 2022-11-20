@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-const PacienteController = require('./controllers/PacienteController');
+const BarramentoController = require('./controllers/BarramentoController');
 
 
-router.post('/eventos', PacienteController.redirecionarEventos);
+router.post('/eventos', BarramentoController.redirecionarEventos);
 
 module.exports = router;
