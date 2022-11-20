@@ -5,7 +5,7 @@
             <mat-label>Nome</mat-label>
             <input formControlName="nome" matInput placeholder="Ex. Joaquin">
           </mat-form-field>
-       
+
         <h2 style="margin-top: 20px">Prioridade</h2>
           <mat-radio-group formControlName="prioridade" class="example-radio-group">
             <mat-radio-button *ngFor="let prioridade of listaPrioridade" [value] = "prioridade" class="example-radio-button">
@@ -17,5 +17,5 @@
 <div mat-dialog-action [align] = "'right'">
     <button mat-raised-button color="warn" mat-dialog-close>Fechar</button>
     <button style="margin-left: 10px;" mat-raised-button color="primary" mat-dialog-close (click)="addPaciente()">Salvar</button>
-    
+
 </div>
