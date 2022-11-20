@@ -25,7 +25,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { ListaComponent } from './lista/lista.component';
 import { ConsultaComponent } from './consulta/consulta.component';
 import { LoginComponent } from './login/login.component';
-
+import { ConsultasEspecialidadesComponent } from './consultas-especialidades/consultas-especialidades.component';
 
 @NgModule({
   declarations: [
@@ -34,8 +34,8 @@ import { LoginComponent } from './login/login.component';
     ServicesComponent,
     ListaComponent,
     ConsultaComponent,
-    LoginComponent
-
+    LoginComponent,
+    ConsultasEspecialidadesComponent
   ],
   imports: [
     BrowserModule,

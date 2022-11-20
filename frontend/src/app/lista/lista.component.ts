@@ -10,6 +10,8 @@ export interface pacientes {
   nome: string;
   data: Date; //Mudar para Date
   prioridade: string;
+  especialidade: string;
+  consulta_cod: string;
 }
 
 const ELEMENT_DATA: pacientes[] = [
@@ -24,7 +26,7 @@ const ELEMENT_DATA: pacientes[] = [
 
 export class ListaComponent implements OnInit {
   title = 'interface';
-  displayedColumns: string[] = ['nome', 'prioridade'];
+  displayedColumns: string[] = ['nome', 'prioridade', 'especialidade', 'consulta_cod'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -57,7 +59,7 @@ export class ListaComponent implements OnInit {
       error: (err) => {
         alert("Error while fetching the Records")
       }
-    })  
+    })
   }
 
   applyFilter(event: Event) {

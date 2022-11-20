@@ -1,17 +1,19 @@
-
-
 <div mat-dialog-content></div>
 
-
-<img src="../../assets/img/desenho3.png" class="logoBacteria" />
-
-
 <header class="retanguloRoxo">
-  
+
   <h1 class="loginTitulo">Login</h1>
-  <input formControlName="login" class="caixinhaLogin" [formGroup] = "loginForm" matInput placeholder="Ex. CardosoJulio3234">
-  <input formControlName="senha" matInput placeholder="Ex. *****" type="password" class="caixinhaSenha">
-  <button  [disabled]="loginForm.valid" style="margin-left: 10px" mat-raised-button color="primary" mat-dialog-close (click)="submitLogin()" class="caixinhaEntrar"> Entrar</button>
-  <div class="mensagem-erro" *ngIf="status==2">Login ou Senha Invalidos!!!</div>
+  <img src="../../assets/img/desenho3.png" class="logoBacteria" />
+  <form [formGroup]="loginForm">
+    <input formControlName="login" class="caixinhaLogin" [formGroup]="loginForm" matInput
+      placeholder="Ex. CardosoJulio3234">
+    <input formControlName="senha" matInput placeholder="Ex. *****" type="password" class="caixinhaSenha">
+    <button [disabled]="!loginForm.valid" style="margin-left: 10px" mat-raised-button color="primary" mat-dialog-close
+      (click)="submitLogin()" class="caixinhaEntrar">Entrar</button>
+  </form>
 </header>
+
+<div class="mensagem-erro"  mat-dialog-content *ngIf="status==2">Login ou Senha Invalidos!!!</div>
+
+
 <router-outlet></router-outlet>

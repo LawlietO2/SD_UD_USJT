@@ -12,6 +12,13 @@
                 {{prioridade}}
             </mat-radio-button>
           </mat-radio-group>
+        
+        <h2 style="margin-top: 20px">Especialidade</h2>
+          <mat-radio-group formControlName="especialidade" class="example-radio-group">
+            <mat-radio-button *ngFor="let especialidade of listaEspecialidade" [value] = "especialidade" class="example-radio-button">
+                {{especialidade}}
+            </mat-radio-button>
+          </mat-radio-group>
     </form>
 </div>
 <div mat-dialog-action [align] = "'right'">

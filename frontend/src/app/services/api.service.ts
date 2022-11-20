@@ -21,9 +21,10 @@ export class ApiService {
     return this.http.get<any>("http://localhost:3000/api/pacientes/")
   }
 
-
   getPosicaoPaciente(id : number){
+    console.log("ID na classe API service :" + id)
     let url = "http://localhost:4000/api/paciente/" + id;
+    console.log(url)
     return this.http.get<any>(url)
   }
 

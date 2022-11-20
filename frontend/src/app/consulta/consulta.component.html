@@ -8,7 +8,15 @@
 </div>
 <p id="Medico">Médico: Ainda não alocado!</p>
 <!--MUDAR PARA VARIÁVEL-->
-
-
+<p id="Cod_consulta">Insira o codigo de consulta</p>
+<!--MUDAR PARA VARIÁVEL-->
+<script type = "text/javascript" src="consulta.component.ts"></script>  
+<form [formGroup] = "pacienteForm">
+<mat-form-field class="example-full-width" appearance="fill">
+  <mat-label>Codigo de consulta</mat-label>
+  <input formControlName="Cod" matInput placeholder="Ex. Joaquin">
+</mat-form-field>
+</form>
+  <button style="margin-left: 10px;" mat-raised-button color="primary" mat-dialog-close (click)="getPosicaoPaciente()"  >Enviar</button>
 
 <router-outlet></router-outlet>

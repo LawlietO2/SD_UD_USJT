@@ -1,6 +1,6 @@
 const PacienteService = require('../services/PacienteService');
 const amqp = require('amqplib/callback_api');
-
+const ShortUniqueId = require('short-unique-id');
 
 module.exports = {
     buscarTodos: async (req, res)=>{
@@ -14,7 +14,9 @@ module.exports = {
                 nome: pacientes[i].nome,
                 estado: pacientes[i].status,
                 prioridade: pacientes[i].prioridade,
-                data: pacientes[i].datalocal
+                data: pacientes[i].datalocal,
+                especialidade: pacientes[i].especialidade,
+                consulta_cod: pacientes[i].consulta_cod
             });
         }
     res.json(json);
@@ -38,15 +40,19 @@ module.exports = {
         let estado = "Pendente";
         let prioridade = req.body.prioridade;
         let data = new Date();
-
+        const uid = new ShortUniqueId({ length: 10 });
+        let consulta_cod = uid(); // p0ZoB1FwH6
+        let especialidades = req.body.especialidade;
         if(nome && estado && prioridade && data){
-            let pacienteId = await PacienteService.inserir(nome, estado, prioridade, data);
+            let pacienteId = await PacienteService.inserir(nome, estado, prioridade, data, consulta_cod, especialidades);
             json.result = {
                 id: pacienteId,
                 nome,
                 estado,
                 prioridade,
-                data
+                data,
+                consulta_cod,
+                especialidades
             };
            
 

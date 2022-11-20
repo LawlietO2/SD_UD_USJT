@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
 import { ApiService } from '../services/api.service';
 import { Router } from '@angular/router';
 
@@ -42,7 +41,7 @@ export class LoginComponent implements OnInit {
         next:(res)=>{
           if(res.result.status == 1){
             this.status = 1;
-            this.router.navigate(['']);
+            this.router.navigate(['especialidades'],{ queryParams: { especialidade: res.result.especialidade }});
           }
           else
             this.status = 2;
