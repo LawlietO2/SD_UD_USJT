@@ -7,8 +7,6 @@ module.exports = {
        
         let pacientes = await PacienteService.buscarPosicaoPaciente();
         
-
-        console.log("==================================================")
         console.log(pacientes)
         let id = req.params.id;
         let nome;
