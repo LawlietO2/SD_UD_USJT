@@ -4,7 +4,7 @@ import { ConsultaComponent } from './consulta/consulta.component';
 import { HomeComponent } from './home/home.component';
 import { ListaComponent } from './lista/lista.component';
 import { LoginComponent } from './login/login.component';
-import { ConsultasEspecialidadesComponent } from './consultas-especialidades/consulta';
+import { ConsultasEspecialidadesComponent } from './consultas-especialidades/consultas-especialidades.component';
 
 const routes: Routes = [
   // { path: '', component: HomeComponent },
@@ -13,7 +13,6 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'especialidades', component: ConsultasEspecialidadesComponent}
 ];
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

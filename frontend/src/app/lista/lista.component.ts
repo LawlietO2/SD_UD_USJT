@@ -59,7 +59,7 @@ export class ListaComponent implements OnInit {
       error: (err) => {
         alert("Error while fetching the Records")
       }
-    })  
+    })
   }
 
   applyFilter(event: Event) {
