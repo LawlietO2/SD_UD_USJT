@@ -50,12 +50,10 @@ module.exports = {
             });
         });
     },
-    enviarEvento: async (body) =>{
+    enviarEvento: async (dados) =>{
         await axios.post('http://localhost:10000/api/eventos', {
                 tipo: "PacienteInserido",
-                dados: {
-                    body
-                }
+                dados
             }).catch((error) => {
                 console.error(error);
               });
