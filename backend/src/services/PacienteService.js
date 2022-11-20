@@ -21,10 +21,10 @@ module.exports = {
             });
         });
     },
-    inserir: (nome, estado, prioridade, data, consulta_cod, especialidades) =>{
+    inserir: (nome, estado, prioridade, data, consulta_cod, especialidade) =>{
         return new Promise((aceito, rejeitado) =>{
-            db.query('INSERT INTO pacientes (nome, status, prioridade, datalocal, consulta_cod, especialidades) VALUES (?, ?, ?, ?, ?, ?)', [nome, estado, prioridade, data, 
-                                                                                                                                            consulta_cod, especialidades] , (error, results)=>{
+            db.query('INSERT INTO pacientes (nome, status, prioridade, datalocal, consulta_cod, especialidade) VALUES (?, ?, ?, ?, ?, ?)', [nome, estado, prioridade, data, 
+                                                                                                                                            consulta_cod, especialidade] , (error, results)=>{
                 if(error){ rejeitado(error); return; }
                 aceito(results.insertId);
             });

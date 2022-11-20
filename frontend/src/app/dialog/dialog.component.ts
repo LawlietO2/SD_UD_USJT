@@ -14,8 +14,8 @@ export class DialogComponent implements OnInit {
   listaEspecialidade = ["Clinico Geral", "Ortopedia", "Pediatria", "Cardiologia"];
   pacienteForm !: FormGroup;
   constructor(
-    private formBuilder : FormBuilder, 
-    private api : ApiService, 
+    private formBuilder : FormBuilder,
+    private api : ApiService,
     private dialogRef : MatDialogRef<DialogComponent>){
 
   }
@@ -29,7 +29,8 @@ export class DialogComponent implements OnInit {
   }
   addPaciente(){
     if(this.pacienteForm.valid){
-      this.api.postPaciente(this.pacienteForm.value)    
+      console.log(this.pacienteForm.value.especialidade);
+      this.api.postPaciente(this.pacienteForm.value)
       .subscribe({
         next:(res)=>{
           alert("Paciente adicionado, o codigo de consulta é " + res.result.consulta_cod);

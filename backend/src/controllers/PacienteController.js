@@ -42,7 +42,7 @@ module.exports = {
         let data = new Date();
         const uid = new ShortUniqueId({ length: 10 });
         let consulta_cod = uid(); // p0ZoB1FwH6
-        let especialidades = req.body.especialidades;
+        let especialidades = req.body.especialidade;
         if(nome && estado && prioridade && data){
             let pacienteId = await PacienteService.inserir(nome, estado, prioridade, data, consulta_cod, especialidades);
             json.result = {
