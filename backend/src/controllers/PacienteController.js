@@ -1,6 +1,7 @@
 const PacienteService = require('../services/PacienteService');
 const amqp = require('amqplib/callback_api');
 const ShortUniqueId = require('short-unique-id');
+const axios = require('axios');
 
 module.exports = {
     buscarTodos: async (req, res)=>{
@@ -55,25 +56,8 @@ module.exports = {
                 especialidades
             };
            
-
-            // // Step 1: Create Connection
-            //  amqp.connect('amqp://localhost', (connError, connection) => {
-            // if (connError) {
-            //     throw connError;
-            // }
-            // // Step 2: Create Channel
-            // connection.createChannel((channelError, channel) => {
-            //     if (channelError) {
-            //         throw channelError;
-            //     }
-            //     // Step 3: Assert Queue
-            //     const QUEUE = 'pacientes'
-            //     channel.assertQueue(QUEUE);
-            //     // Step 4: Send message to queue
-            //     channel.sendToQueue(QUEUE, Buffer.from('Mensagem de teste do barramento'));
-            //     console.log(`Message send ${QUEUE}`);
-            //   })
-            // })
+            //Envia evento ao barramento
+            PacienteService.enviarEvento(json.result); //O barramento devera identificar a inclusão do paciente e realizar a adição do mesmo na tabela de especialidades
             
         }else{
             json.error = 'Campos não enviados'
@@ -111,5 +95,9 @@ module.exports = {
         let paciente = await PacienteService.excluir(req.params.id);
 
         res.json(json);
+    },
+    receberEvento: async (req, res)=>{
+      console.log(req.body);
+      res.status(200).send({ msg: "ok" });
     }
 }

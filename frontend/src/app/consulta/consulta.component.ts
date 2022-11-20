@@ -64,6 +64,7 @@ export class ConsultaComponent implements OnInit {
     .subscribe({
      next: (res) => {
   
+      console.log(res.result);
       this.dataSource = res.result;
   
       this.dataSource.paginator = this.paginator;

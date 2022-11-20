@@ -1,4 +1,5 @@
 const db = require('../db');
+const axios = require('axios');
 
 module.exports = {
     buscarTodos: () =>{
@@ -48,5 +49,16 @@ module.exports = {
                 aceito(results);
             });
         });
+    },
+    enviarEvento: async (body) =>{
+        await axios.post('http://localhost:10000/api/eventos', {
+                tipo: "PacienteInserido",
+                dados: {
+                    body
+                }
+            }).catch((error) => {
+                console.error(error);
+              });
     }
+
 };
