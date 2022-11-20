@@ -42,7 +42,7 @@ export class ConsultaComponent implements OnInit {
 
   ngOnInit(): void {
     this.pacienteForm = this.formBuilder.group({
-      Cod : '',
+      Cod : ['',Validators.required]
     })
     
   }

@@ -7,6 +7,31 @@
   max-width: max-content;
 }
 
+#FilaTitulo {
+  position: absolute;
+  top: 5%;
+  left: 45%;
+  font-size: 18px;
+  color: black;
+  max-width: max-content;
+}
+
+.linhaFila {
+  position: absolute;
+  width: 351px;
+  height: 0px;
+  border: 0.1mm solid #000000;
+  top: 12%;
+}
+
+.linhaFicha {
+  position: absolute;
+  width: 845px;
+  height: 0px;
+  border: 0.1mm solid #000000;
+  top: 18%;
+}
+
 .header {
   position: absolute;
   left: 0px;
@@ -19,7 +44,7 @@
 
 }
 
-.FilaVirtual {
+.acompanhamentoTitulo {
   position: absolute;
   top: 35px;
   left: 150px;
@@ -65,7 +90,7 @@
   position: absolute;
   width: 848px;
   height: 575px;
-  left: 556px;
+  left: 40%;
   top: 186px;
 
   background: #D9D9D9;
@@ -76,41 +101,42 @@
 .campo {
   position: absolute;
   width: 742px;
-  height: 286px;
+  height: 330px;
   left: 50px;
-  top: 200px;
+  top: 140px;
 
   background: #FFFFFF;
 }
 
-.botaoReceita{
+.botaoReceita {
 
   position: absolute;
   width: 150px;
   height: 32px;
   left: 500px;
-  top: 310px;
-  
+  top: 370px;
   background: #a08bff;
   border-radius: 21.5px;
   border: none;
-  
+
 }
 
 
 .GerarReceita {
 
   position: absolute;
-  width: 120px;
-  height: 23px;
-  left: 1112px;
-  top: 664px;
-  
   font-family: 'Roboto';
   font-style: normal;
-  font-weight: 400;
   font-size: 20px;
-  line-height: 23px;
-  
   color: #1E1E1E;
+}
+
+.Fila {
+  position: absolute;
+  width: 357px;
+  height: 575px;
+  left: 15%;
+  top: 186px;
+
+  background: #D9D9D9;
 }
