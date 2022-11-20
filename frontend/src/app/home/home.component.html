@@ -12,12 +12,21 @@
     </nav>
     <p id="description">uma solução computacional para clínica médica</p>
     <p id="acesso">Acesse como:</p>
-    <button id="botao_medico">
-        <p  class="medico">MÉDICO</p>
-    </button>
-    <button id="botao_atendente">
-        <p class="atendente">ATENDENTE</p>
-    </button>>
-    <img src="../../assets/img/Bicho_Medico.png" id="bicho_medico">
-    <img src="../../assets/img/Bicho_Atendente.png" id="bicho_atendente">
+
+    <span>
+        <button id="botao_medico" (click)="submitEntrar()">
+            <p >MÉDICO</p>
+        </button>
+        <img src="../../assets/img/Bicho_Medico.png" id="bicho_medico">
+    </span>
+
+    <span>
+        <button id="botao_atendente" (click)="submitEntrar()">
+            <p class="atendente">ATENDENTE</p>
+        </button>>
+       
+        <img src="../../assets/img/Bicho_Atendente.png" id="bicho_atendente">
+    </span>
+
+
 </body>
