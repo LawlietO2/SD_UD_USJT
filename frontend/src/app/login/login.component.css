@@ -35,11 +35,10 @@ mat-form-field{
 }
 
 .logoBacteria{
-  position: absolute;
-  width: 25%;
-  height: 25%;
-  left: 600px;
-  top: 80px;
+  position:absolute;
+  right: 90px;
+  min-width: 0%;
+  max-width: 100%;
 
 }
 
@@ -47,7 +46,7 @@ mat-form-field{
   position: absolute;
   width: 373px;
   height: 432px;
-  left: 800px;
+  left: 1000px;
   top: 243px;
   min-width: 0%;
   max-width: 100%;
@@ -178,4 +177,3 @@ line-height: 14px;
 
   color: #d6a6a6;
 }
-

@@ -11,7 +11,8 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class DialogComponent implements OnInit {
 
   listaPrioridade = ["Não Urgente", "Pouco Urgente", "Urgente", "Emergência"];
-  pacienteForm !: FormGroup;  
+  listaEspecialidade = ["Clinico Geral", "Ortopedia", "Pediatria", "Cardiologia"];
+  pacienteForm !: FormGroup;
   constructor(
     private formBuilder : FormBuilder, 
     private api : ApiService, 
@@ -22,7 +23,8 @@ export class DialogComponent implements OnInit {
   ngOnInit(): void {
     this.pacienteForm = this.formBuilder.group({
       nome : ['',Validators.required],
-      prioridade : ['',Validators.required]
+      prioridade : ['',Validators.required],
+      especialidade : ['',Validators.required]
     })
   }
   addPaciente(){
@@ -31,8 +33,7 @@ export class DialogComponent implements OnInit {
       .subscribe({
         next:(res)=>{
           alert("Paciente adicionado, o codigo de consulta é " + res.result.consulta_cod);
-          console.log(this.pacienteForm.value)
-          console.log()
+          window.location.reload();
           this.pacienteForm.reset();
           this.dialogRef.close();
         },

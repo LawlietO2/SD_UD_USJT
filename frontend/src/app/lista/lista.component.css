@@ -1,6 +1,18 @@
 .example-spacer {
   flex: 1 1 auto;
 }
-table{
-  width: 100%;
+table {
+  width: 100% !important;
+  margin-bottom:500px;
+}
+
+.mat-header-cell{
+  color:black;
+  font-style: bold;
+  font-size: 1.5em;
+}
+
+.mat-cell{
+  color:black;
+  font-size: 1.2em;
 }
