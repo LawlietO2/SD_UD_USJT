@@ -4,6 +4,66 @@ const ShortUniqueId = require('short-unique-id');
 const axios = require('axios');
 
 module.exports = {
+    buscarPosicaoPaciente: async (req, res)=>{
+        
+        let json = {error:'', result:[]};
+       
+        let pacientes = await PacienteService.buscarPosicaoPaciente();
+        
+        console.log(pacientes)
+        let id = req.params.id;
+        let nome;
+       
+        for(let i in pacientes){
+            let wrk = pacientes[i].consulta_cod
+            if(wrk == id){
+                nome = pacientes[i].nome;
+            }
+          }
+
+          for(let i in pacientes){
+            switch (pacientes[i].prioridade) {
+                case "critica":
+                  pacientes[i].prioridadeHelper = 1;
+                  break;
+                case "alta":
+                  pacientes[i].prioridadeHelper = 2;
+                  break;
+                case "normal":
+                  pacientes[i].prioridadeHelper = 3;
+                  break;
+                case "baixa":
+                  pacientes[i].prioridadeHelper = 4;
+                  break;
+                default:
+                  pacientes[i].prioridadeHelper = 4;
+                  break;
+              }
+        }
+        pacientes.sort(function(a,b) { 
+              return a.datalocal.getTime() - b.datalocal.getTime(); 
+        });
+        pacientes.sort(function(a,b) { 
+            return a.prioridadeHelper - b.prioridadeHelper; 
+        });
+
+        //critica 1
+        //alta    2
+        //normal  3
+        //baixa   4   
+        const index = pacientes.findIndex(object => {
+            return object.consulta_cod == id;
+          });   
+          
+          json.result = {
+            nome: nome,
+            queueId: index + 1
+        };
+        console.log(json.result)
+
+        
+        res.json(json);
+    },
     buscarTodos: async (req, res)=>{
         let json = {error:'', result:[]};
 
