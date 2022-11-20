@@ -1,4 +1,4 @@
-const PacienteService = require('../services/EspecialidadesService');
+const EspecialidadesService = require('../services/EspecialidadesService');
 const amqp = require('amqplib/callback_api');
 const ShortUniqueId = require('short-unique-id');
 const axios = require('axios');
@@ -7,7 +7,7 @@ module.exports = {
     buscarTodos: async (req, res)=>{
         let json = {error:'', result:[]};
 
-        let pacientes = await EspecialidadeService.buscarTodos();
+        let pacientes = await EspecialidadesService.buscarTodos();
 
         for(let i in pacientes){
             json.result.push({
@@ -26,7 +26,7 @@ module.exports = {
         let json = {error:'', result:{}};
 
         let id = req.params.id;
-        let paciente = await EspecialidadeService.buscarUm(id);
+        let paciente = await EspecialidadesService.buscarUm(id);
         
         if(paciente){
             json.result = paciente;
@@ -45,7 +45,7 @@ module.exports = {
         let consulta_cod = uid(); // p0ZoB1FwH6
         let especialidades = req.body.especialidade;
         if(nome && estado && prioridade && data){
-            let pacienteId = await EspecialidadeService.inserir(nome, estado, prioridade, data, consulta_cod, especialidades);
+            let pacienteId = await EspecialidadesService.inserir(nome, estado, prioridade, data, consulta_cod, especialidades);
             json.result = {
                 id: pacienteId,
                 nome,
@@ -57,7 +57,7 @@ module.exports = {
             };
            
             //Envia evento ao barramento
-            EspecialidadeService.enviarEvento(json.result); //O barramento devera identificar a inclusão do paciente e realizar a adição do mesmo na tabela de especialidades
+            EspecialidadesService.enviarEvento(json.result); //O barramento devera identificar a inclusão do paciente e realizar a adição do mesmo na tabela de especialidades
             
         }else{
             json.error = 'Campos não enviados'
@@ -75,7 +75,7 @@ module.exports = {
         let data = new Date();
 
         if(id && nome && estado && prioridade && data){
-            await EspecialidadeService.alterar(id, nome, estado, prioridade, data);
+            await EspecialidadesService.alterar(id, nome, estado, prioridade, data);
             json.result = {
                 id,
                 nome,
@@ -92,15 +92,37 @@ module.exports = {
     excluir: async (req, res)=>{
         let json = {error:'', result:{}};
 
-        let paciente = await EspecialidadeService.excluir(req.params.id);
+        let paciente = await EspecialidadesService.excluir(req.params.id);
 
         res.json(json);
     },
     receberEvento: async (req, res)=>{
+        let json = {error:'', result:{}};
+        let estado = "Pendente";
+        let nome = req.body.dados.nome;
+        let prioridade = req.body.dados.prioridade;
+        let data = new Date();
+        let consulta_cod = req.body.dados.consulta_cod;
+        let especialidade = req.body.dados.especialidade;
 
+        if(nome && estado && prioridade && data){
+            let pacienteId = await EspecialidadesService.inserir(nome, estado, prioridade, data, consulta_cod, especialidade);
+            json.result = {
+                id: pacienteId,
+                nome,
+                estado,
+                prioridade,
+                data,
+                consulta_cod,
+                especialidade
+            };
+            //Envia evento ao barramento
+            EspecialidadesService.enviarEvento(json.result); //O barramento devera identificar a inclusão do paciente e realizar a adição do mesmo na tabela de especialidades
+            
+        }else{
+            json.error = 'Campos não enviados'
+        }
 
-        
-      console.log(req.body);
-      res.status(200).send({ msg: "ok" });
+        res.json(json);
     }
 }

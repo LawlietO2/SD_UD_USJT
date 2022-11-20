@@ -8,14 +8,13 @@ module.exports = {
         let json = {error:'', result:[]};
         const evento = req.body;
         let tipo = req.body.tipo;
-
         if(tipo == "PacienteInserido"){
             //Informa o sucesso da criacao ao microsservico de pacientes
-            axios.post('http://localhost:3000/api/eventos', evento);
+            axios.post('http://localhost:' + process.env.PORT + '/api/eventos', evento);
             //Repassa o conteudo ao microsservico de consultas por especialidade
-            axios.post('http://localhost:6000/api/eventos', evento);
+            axios.post('http://localhost:' + process.env.PORT_ESPECIALIDADE +'/api/eventos', evento);
         }
-        
+
         res.status(200).send({ msg: "ok" });
         //res.json(evento);
     }

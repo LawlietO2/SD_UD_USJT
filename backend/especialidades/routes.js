@@ -14,6 +14,6 @@ router.put('/paciente/:id', EspecialidadesController.alterar);
 //aqui deletamos um paciente no db
 router.delete('/paciente/:id', EspecialidadesController.excluir);
 //Redirecionamento do barramento apos inclusao de paciente, devemos incluir na base de especialidades.
-router.post('/eventos', EspecialidadesController.receberEvento);//ALTERAR PacienteController para EspecialidadesController
+router.post('/eventos', EspecialidadesController.receberEvento);
 
 module.exports = router;

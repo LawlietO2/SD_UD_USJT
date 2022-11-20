@@ -36,16 +36,15 @@ module.exports = {
     },
     inserir: async (req, res)=>{
         let json = {error:'', result:{}};
-
         let nome = req.body.nome;
         let estado = "Pendente";
         let prioridade = req.body.prioridade;
         let data = new Date();
         const uid = new ShortUniqueId({ length: 10 });
         let consulta_cod = uid(); // p0ZoB1FwH6
-        let especialidades = req.body.especialidade;
+        let especialidade = req.body.especialidade;
         if(nome && estado && prioridade && data){
-            let pacienteId = await PacienteService.inserir(nome, estado, prioridade, data, consulta_cod, especialidades);
+            let pacienteId = await PacienteService.inserir(nome, estado, prioridade, data, consulta_cod, especialidade);
             json.result = {
                 id: pacienteId,
                 nome,
@@ -53,9 +52,9 @@ module.exports = {
                 prioridade,
                 data,
                 consulta_cod,
-                especialidades
+                especialidade
             };
-           
+  
             //Envia evento ao barramento
             PacienteService.enviarEvento(json.result); //O barramento devera identificar a inclusão do paciente e realizar a adição do mesmo na tabela de especialidades
             
