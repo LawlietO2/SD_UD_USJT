@@ -7,12 +7,11 @@ import { LoginComponent } from './login/login.component';
 import { ConsultasEspecialidadesComponent } from './consultas-especialidades/consultas-especialidades.component';
 
 const routes: Routes = [
-  // { path: '', component: HomeComponent },
-  { path: '', component: ListaComponent },
+  { path: 'lista', component: ListaComponent },
   { path: 'consulta', component: ConsultaComponent},
   { path: 'login', component: LoginComponent},
   { path: 'especialidades', component: ConsultasEspecialidadesComponent},
-  { path: 'home', component: HomeComponent}
+  { path: '', component: HomeComponent}
 ];
 
 @NgModule({
