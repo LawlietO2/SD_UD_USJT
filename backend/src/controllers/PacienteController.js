@@ -9,8 +9,8 @@ module.exports = {
         let json = {error:'', result:[]};
        
         let pacientes = await PacienteService.buscarPosicaoPaciente();
-        
         console.log(pacientes)
+        
         let id = req.params.id;
         let nome;
        
@@ -23,16 +23,16 @@ module.exports = {
 
           for(let i in pacientes){
             switch (pacientes[i].prioridade) {
-                case "critica":
+                case "Emergência":
                   pacientes[i].prioridadeHelper = 1;
                   break;
-                case "alta":
+                case "Urgente":
                   pacientes[i].prioridadeHelper = 2;
                   break;
-                case "normal":
+                case "Pouco Urgente":
                   pacientes[i].prioridadeHelper = 3;
                   break;
-                case "baixa":
+                case "Não Urgente":
                   pacientes[i].prioridadeHelper = 4;
                   break;
                 default:
@@ -59,9 +59,6 @@ module.exports = {
             nome: nome,
             queueId: index + 1
         };
-        console.log(json.result)
-
-        
         res.json(json);
     },
     buscarTodos: async (req, res)=>{
@@ -91,7 +88,6 @@ module.exports = {
         if(paciente){
             json.result = paciente;
         }
-        console.log(json);
         res.json(json);
     },
     inserir: async (req, res)=>{
