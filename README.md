@@ -13,3 +13,6 @@ Victor Santos e Santos - RA: 820143889
 
 Nesta nova versão nos implementamos um barramento de eventos, cuja a finalidade é efetuar a comunicação entre os dois microsserviços existentes, para aumentar a eficiência do sistema, o funcionamento se dá da seguinte maneira: o primeiro microsserviço ao efetuar um cadastro no banco de dados, envia uma mensagem para o segundo microsserviço de fila, que então atualiza a lista de pacientes que tem na memoria cache, para que ao ser consultado pelo front-end o microsserviço de fila, não realize consultas desnecessárias base de dados. 
 
+-------      Link para a apresentação      -------
+
+https://youtu.be/1tFia4cbkwQ
