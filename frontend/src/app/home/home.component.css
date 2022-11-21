@@ -1,0 +1,243 @@
+#topbar {
+    position: absolute;
+    width: 100%;
+    height: 12%;
+    top: 0px;
+    left: 0px;
+
+    background: #4A518F;
+    border-radius: 0px 0px 20px 20px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 54px;
+    line-height: 63px;
+    align-items: center;
+    text-align: center;
+
+    color: #F4F4F4;
+}
+
+#description {
+
+    position: absolute;
+    width: 100%;
+    height: 86px;
+    left: 50%;
+    transform: translate(-50%);
+    top: 15%;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 35px;
+    text-align: center;
+
+    color: #4A518F;
+}
+
+#acesso {
+
+    position: absolute;
+    width: 100%;
+    height: 86px;
+    left: 50%;
+    transform: translate(-50%);
+    top: 25%;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 35px;
+    text-align: center;
+
+    color: #4A518F;
+}
+
+
+
+#bicho_medico {
+
+    position: absolute;
+    width: 301px;
+    height: 272px;
+    left: 40%;
+    transform: translate(-50%);
+    top: 50%;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 35px;
+    text-align: center;
+
+    color: #4A518F;
+}
+
+
+#bicho_atendente {
+
+    position: absolute;
+    width: 365px;
+    height: 262px;
+    left: 66%;
+    transform: translate(-50%);
+    top: 50%;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 35px;
+    text-align: center;
+
+    color: #4A518F;
+}
+
+#botao_medico {
+    position: absolute;
+    width: 150px;
+    height: 50px;
+    left: 41%;
+    transform: translate(-70%);
+    top: calc(55% + 262px);
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+
+    color: #FFFFFF;
+
+    background: #4A518F;
+    border-radius: 21.5px;
+}
+
+#botao_atendente {
+    position: absolute;
+    width: 150px;
+    height: 50px;
+    left: 65%;
+    transform: translate(-55%);
+    top: calc(55% + 262px);
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+
+    color: #FFFFFF;
+
+    background: #4A518F;
+    border-radius: 21.5px;
+}
+
+@media screen and (max-width: 1200px) {
+
+    #bicho_medico {
+        left: 25%;
+    }
+
+    #botao_medico {
+        left: 25%;
+    }
+
+    #atendente {
+        left: 75%;
+    }
+
+    #bicho_atendente {
+        left: 75%;
+    }
+
+    #botao_atendente {
+        left: 75%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    #topsize {
+        font-size: 24px;
+    }
+
+    #description {
+        font-size: 24px;
+    }
+
+    #acesso {
+        font-size: 24px;
+        top: 30%;
+    }
+
+    #medico {
+        left: 50%;
+    }
+
+    #bicho_medico {
+        left: 50%;
+    }
+
+    #botao_medico {
+        left: 50%;
+        transform: translate(-50%);
+    }
+
+    #atendente {
+        top: 840px;
+        left: 50%;
+    }
+
+    #bicho_atendente {
+        top: 940px;
+        left: 50%;
+    }
+
+    #botao_atendente {
+        top: calc(960px + 262px);
+        left: 50%;
+        transform: translate(-50%);
+    }
+
+
+}
+
+
+.header {
+    position: absolute;
+    left: 0px;
+    width: 100%;
+    height: 100px;
+    margin: 0px;
+    padding: 0px;
+    background: #4A518F;
+    font-size: 50px;
+
+}
+
+#bemVindo {
+    position: absolute;
+    top: 35px;
+    left: 40%;
+    margin-left: 0px;
+    margin-right: 0px;
+    color: antiquewhite !important;
+    font-family: 'Baloo 2', normal;
+    font-size: 40px;
+}
+
+.BalooFont {
+    font-family: 'Baloo Regular';
+    src: url(../../assets/Baloo-Regular.ttf) format('opentype');
+}
+
+.RobotoFont {
+    font-family: 'Roboto Medium';
+    src: url(../../assets/Roboto-Medium.ttf) format('opentype');
+    font-size: 18px;
+}
