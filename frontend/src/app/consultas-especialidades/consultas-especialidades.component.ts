@@ -15,7 +15,7 @@ export class ConsultasEspecialidadesComponent implements OnInit {
   nome : string = "";
   consulta_cod : string = "";
   dataList: any;
-  displayedColumns: string[] = ['nome', 'prioridade', 'especialidade', 'consulta_cod'];
+  displayedColumns: string[] = ['nome', 'consulta_cod'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
