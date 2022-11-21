@@ -10,6 +10,14 @@ module.exports = {
             });
         });
     },
+    buscarPosicaoPacientePorEspecialidade: (especialidade) =>{
+        return new Promise((aceito, rejeitado) =>{
+            db.query('SELECT * FROM pacientes WHERE status = ? AND especialidade = ?', ['pendente', especialidade] , (error, results)=>{
+                if(error){ rejeitado(error); return; }
+                aceito(results);
+            });
+        });
+    },
     buscarTodos: () =>{
         return new Promise((aceito, rejeitado) =>{
             db.query('SELECT * FROM pacientes', (error, results)=>{
@@ -65,6 +73,15 @@ module.exports = {
             }).catch((error) => {
                 console.error(error);
               });
+    },
+    removerConsulta: (consulta_cod) =>{
+        return new Promise((aceito, rejeitado) =>{
+            db.query('DELETE FROM pacientes WHERE consulta_cod = ?', [consulta_cod], (error, results)=>{
+                if(error){ 
+                    rejeitado(error); return; }
+                aceito(results);
+            });
+        });
     }
 
 };

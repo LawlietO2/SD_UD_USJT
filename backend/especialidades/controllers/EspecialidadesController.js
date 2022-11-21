@@ -31,9 +31,21 @@ module.exports = {
                 consulta_cod,
                 especialidade
             };
-            //Envia evento ao barramento
-            EspecialidadesService.enviarEvento(json.result); //O barramento devera identificar a inclusão do paciente e realizar a adição do mesmo na tabela de especialidades
-            
+        }else{
+            json.error = 'Campos não enviados'
+        }
+
+        res.json(json);
+    },
+    receberEventoFimDeAtendimento: async (req, res)=>{
+        let json = {error:'', result:{}};
+        let consulta_cod = req.body.dados.consulta_cod;
+
+        if(consulta_cod){
+            let retorno = await EspecialidadesService.removerConsulta(consulta_cod);
+            json.result = {
+                retorno : "OK"
+            }
         }else{
             json.error = 'Campos não enviados'
         }
@@ -50,7 +62,8 @@ module.exports = {
     atualizarStatusFimDeAtendimento: async (req, res)=>{
         let json = {error:'', result:{}};
         let retorno = await EspecialidadesService.atualizarStatusFimDeAtendimento(req.body.queixa, req.body.consulta_cod);
-
+        console.log(req.body)
+        EspecialidadesService.enviarEventoFimDeAtendimento(req.body); 
         res.json(json);
     },
     getConsultasPorEspecialidade: async (req, res)=>{

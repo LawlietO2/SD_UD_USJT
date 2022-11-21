@@ -1,6 +1,6 @@
 <header class="header">
   <h1 class="posicaoTitulo">
-    <span class="BalooFont">fila virtual </span>
+    <span class="BalooFont">Fila virtual </span>
   </h1>
 </header>
 
@@ -15,28 +15,32 @@
 <table class="caixinhaGrande">
 
   <span id="inserir_codigo">
-    <p> <b>insira o código de consulta: </b></p>
+    <p> <b>Insira o código de consulta: </b></p>
   </span>
+
+  <!-- <p class="linhaFicha"></p> -->
 
   <article class="posicaoCaixinha">
     <form [formGroup]="pacienteForm" style="border: 0;" >
         <input style="width: 360px;" formControlName="Cod" matInput placeholder="Ex. AL1Cr0UHrK" class="caixinhaCodigo" >
     </form>
+    <button class="botaoOK" mat-dialog-close (click)="getPosicaoPaciente()"> <b> OK </b></button>
   </article>
-
-
-  <button class="botaoOK" mat-dialog-close (click)="getPosicaoPaciente()"> <b> OK </b></button>
 
   <span class="caixinhaPosicao">
     <div id="Posicao">
       <p>Posição</p>
       <br />
-      <p id="Fila">#{{posicao}}</p>
+      <p id="Fila"><br>#{{posicao}}</p>
     </div>
   </span>
 
   <span class="caixinhaPaciente" style="width:436px ;">
     <span id="paciente"> <b>Paciente: </b> {{nome}}</span>
+  </span>
+
+  <span class="caixinhaEspecialidade" style="width:436px ;">
+    <span id="paciente"> <b>Especialidade: </b> {{especialidade}}</span>
   </span>
 
   <!-- <span class="caixinhaMedico" style="width:436px ;">

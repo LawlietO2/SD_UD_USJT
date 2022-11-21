@@ -51,12 +51,19 @@ module.exports = {
             });
         });
     },
-    enviarEvento: async (body) =>{
+    removerConsulta: (consulta_cod) =>{
+        return new Promise((aceito, rejeitado) =>{
+            db.query('DELETE FROM consultas WHERE consulta_cod = ?', [consulta_cod], (error, results)=>{
+                if(error){ 
+                    rejeitado(error); return; }
+                aceito(results);
+            });
+        });
+    },
+    enviarEventoFimDeAtendimento: async (dados) =>{
         await axios.post('http://localhost:10000/api/eventos', {
-                tipo: "ConsultaInserida",
-                dados: {
-                    body
-                }
+                tipo: "FimDeAtendimento",
+                dados
             }).catch((error) => {
                 console.error(error);
               });

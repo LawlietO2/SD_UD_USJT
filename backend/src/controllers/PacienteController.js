@@ -13,26 +13,35 @@ module.exports = {
         console.log(pacientes)
         let id = req.params.id;
         let nome;
-       
+        let especialidade;
+        let wrk_pacientes;
+        let contador = 0;
+
         for(let i in pacientes){
             let wrk = pacientes[i].consulta_cod
             if(wrk == id){
                 nome = pacientes[i].nome;
+                especialidade = pacientes[i].especialidade;
             }
           }
 
+          pacientes = await PacienteService.buscarPosicaoPacientePorEspecialidade(especialidade);
+
+          console.log("NOVO ARRAY")
+          console.log(pacientes)
+
           for(let i in pacientes){
             switch (pacientes[i].prioridade) {
-                case "critica":
+                case "Emergência":
                   pacientes[i].prioridadeHelper = 1;
                   break;
-                case "alta":
+                case "Urgente":
                   pacientes[i].prioridadeHelper = 2;
                   break;
-                case "normal":
+                case "Pocuo Urgente":
                   pacientes[i].prioridadeHelper = 3;
                   break;
-                case "baixa":
+                case "Não Urgente":
                   pacientes[i].prioridadeHelper = 4;
                   break;
                 default:
@@ -57,6 +66,7 @@ module.exports = {
           
           json.result = {
             nome: nome,
+            especialidade,
             queueId: index + 1
         };
         console.log(json.result)
@@ -158,5 +168,20 @@ module.exports = {
     receberEvento: async (req, res)=>{
       console.log(req.body);
       res.status(200).send({ msg: "ok" });
+    },
+    receberEventoFimDeAtendimento: async (req, res)=>{
+        let json = {error:'', result:{}};
+        let consulta_cod = req.body.dados.consulta_cod;
+
+        if(consulta_cod){
+            let retorno = await PacienteService.removerConsulta(consulta_cod);
+            json.result = {
+                retorno : "OK"
+            }
+        }else{
+            json.error = 'Campos não enviados'
+        }
+
+        res.json(json);
     }
 }

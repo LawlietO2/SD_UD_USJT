@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as CryptoJS from 'crypto-js';
+import { map, Observable } from 'rxjs';
 const PORT_ESPECIALIDADES = "7000";
 const PORT_PACIENTES = "3000";
 const PORT_LOGIN = "4100";
@@ -11,6 +12,13 @@ const PORT_LOGIN = "4100";
 export class ApiService {
 
   constructor(private http : HttpClient) { }
+
+  downloadPDF(url: string): Observable<Blob> {
+    const options = { responseType: 'blob' as 'json' };
+    return this.http
+   .get<Blob>(url, options)
+   .pipe(map((res : any) => new Blob([res], { type: 'application/pdf' })));
+ }
 
   verificarLogin(especialidade : any){
     let url = "http://localhost:" + PORT_LOGIN + "/api/verificar-login/" + "\"" + especialidade + "\"";
@@ -41,7 +49,8 @@ export class ApiService {
   }
 
   getPosicaoPaciente(id : number){
-    let url = "http://localhost:" + PORT_PACIENTES + "api/pacientes/" + id;
+    let url = "http://localhost:" + PORT_PACIENTES + "/api/pacientes/" + id;
+    console.log(url)
     return this.http.get<any>(url)
   }
 

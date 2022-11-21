@@ -16,6 +16,8 @@ router.put('/paciente/:id', PacienteController.alterar);
 //aqui deletamos um paciente no db
 router.delete('/paciente/:id', PacienteController.excluir);
 
+router.post('/eventos-fim-atendimento', PacienteController.receberEventoFimDeAtendimento);
+
 //aqui inserimos um paciente no db
 router.post('/eventos', PacienteController.receberEvento);
 

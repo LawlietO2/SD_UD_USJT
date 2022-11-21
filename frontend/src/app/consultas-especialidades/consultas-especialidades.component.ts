@@ -65,7 +65,13 @@ export class ConsultasEspecialidadesComponent implements OnInit {
    .subscribe({
      next: (res) => {
       console.log(res.result);
-       this.dataSource = res.result;
+       console.log(this.dataSource)
+        const length = 9 - res.result.length;
+         for (let i = 0; i < length; i++) {
+
+          res.result.push(Object.create(null));
+         }
+         this.dataSource = res.result;
        this.dataList = res.result;
        this.dataSource.paginator = this.paginator;
        this.dataSource.sort = this.sort
@@ -104,6 +110,12 @@ export class ConsultasEspecialidadesComponent implements OnInit {
   //    }
   //  })
   // }
+
+  atualizar(){
+   window.location.reload();
+  }
+
+
   atualizarStatusFimDeAtendimento(){
     if(this.pacienteForm.valid){
       let json = {};

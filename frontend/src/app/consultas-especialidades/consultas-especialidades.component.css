@@ -10,12 +10,12 @@
 #FilaTitulo {
   position: absolute;
   width: 357px;
-  height: 575px;
+  height: 615px;
   left: 15%;
   top: 145px;
   font-size: 18px;
-  color: rgb(60, 60, 60);
-  background-color: #D9D9D9;
+  border-radius: 21.5px;
+  background-color: #D9D9D9
 }
 
 .linhaFila {
@@ -56,6 +56,17 @@
   font-size: 40px;
 }
 
+.mat-header-cell {
+  color: black;
+  font-style: bold;
+  font-size: 1.5em;
+}
+
+.mat-cell {
+  color: black;
+  font-size: 1.2em;
+}
+
 .BalooFont {
   font-family: 'Baloo Regular';
   src: url(../../assets/Baloo-Regular.ttf) format('opentype');
@@ -89,12 +100,20 @@
 .forms {
   position: absolute;
   width: 848px;
-  height: 575px;
-  left: 40%;
-  top: 186px;
-
-
+  height: 616px;
+  left: 35%;
+  top: 146px;
+  border-radius: 21.5px;
   background: #D9D9D9;
+}
+
+.informacoes {
+  position: absolute;
+  /* width: 848px; */
+  /* height: 616px; */
+  left: 36%;
+  top: 160px;
+
 }
 
 .campo {
@@ -102,7 +121,8 @@
   width: 742px;
   left: 50px;
   top: 140px;
-
+  height: 300px;
+  border-radius: 21.5px;
   background: #FFFFFF;
 }
 
@@ -118,11 +138,11 @@
   position: absolute;
   width: fit-content;
   height: 32px;
-  left: 376px;
+  left: 110px;
   transform: translateX(-50%);
   top: 500px;
-  background: #a08bff;
   border-radius: 21.5px;
+  background: #a08bff;
   border: none;
   color: #FFFFFF;
 }
@@ -131,21 +151,33 @@
   position: absolute;
   width: fit-content;
   height: 32px;
-  left: 15%;
+  right: 250px;
   transform: translateX(50%);
-  top: 780px;
+  top: 560px;
   background: #a08bff;
   border-radius: 21.5px;
+  border: none;
+}
+
+.botaoAtualizar {
+  position: absolute;
+  width: fit-content;
+  height: 34px;
+  left: 180px;
+  transform: translateX(50%);
+  top: 560px;
+  border-radius: 21.5px;
+  background: #a08bff;
   border: none;
 }
 
 
 .Fila {
   position: absolute;
-  width: 357px;
-  height: 575px;
-  left: 15%;
-  top: 186px;
+  width: 355px;
+  left: 0px;
+  top: 50px;
+  border-radius: 21.5px;
   background: #D9D9D9;
 }
 

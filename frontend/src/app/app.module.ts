@@ -35,7 +35,7 @@ import { ConsultasEspecialidadesComponent } from './consultas-especialidades/con
     ListaComponent,
     ConsultaComponent,
     LoginComponent,
-    ConsultasEspecialidadesComponent
+    ConsultasEspecialidadesComponent,
   ],
   imports: [
     BrowserModule,

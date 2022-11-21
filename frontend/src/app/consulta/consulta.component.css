@@ -17,8 +17,9 @@
 }
 
 #inserir_codigo {
-  font-size: 40px;
+  font-size: 30px;
   position: relative;
+  left: 55px;
   padding-top: 100px;
   color: rgb(35, 35, 35);
 }
@@ -30,7 +31,7 @@
   top: 30px;
   font-family: 'Roboto';
   font-style: normal;
-  font-size: 30px;
+  font-size: 28px;
   color: #000000;
 }
 
@@ -84,7 +85,13 @@ form {
   max-width: 100%;
   min-width: 0%;
   padding-top: 100px;
-  left: 100px;
+}
+
+.linhaFicha {
+  position: absolute;
+  width: 1900px;
+  height: 0px;
+  border: 0.1mm solid #000000;
 
 }
 
@@ -132,19 +139,18 @@ form {
 
 .caixinhaCodigo {
   position: absolute;
-  width: 360px !important;
-  height: 87px;
+  width: 200px !important;
+  height: 60px;
   background: #D9D9D9;
   border-radius: 60px;
   border: 0px;
-  font-size: 30px;
+  font-size: 15px;
 
 }
 
 .posicaoCaixinha{
   position: absolute;
-  left: 550px;
-  top: 60px;
+  top: 155px;
 }
 
 .caixinhaMedico {
@@ -161,12 +167,13 @@ form {
 .botaoOK {
 
   position: relative;
-  width: 50px;
-  height: 32px;
-  left: 205%;
+  width: 100px !important;
+  height: 62px;
+  left: 280px;
+  top: 34px;
   transform: translate(0px, -40px);
   background: #a08bff;
-  border-radius: 21.5px;
+  border-radius: 60px;
   border: none;
 
 }
@@ -175,8 +182,20 @@ form {
   position: absolute;
   width: 436px;
   height: 87px;
-  left: 108px;
-  top: 307px;
+  left: 600px;
+  top: 410px;
+
+  background: #D9D9D9;
+  border-radius: 60px;
+
+}
+
+.caixinhaEspecialidade {
+  position: absolute;
+  width: 436px;
+  height: 87px;
+  left: 600px;
+  top: 520px;
 
   background: #D9D9D9;
   border-radius: 60px;
@@ -185,10 +204,10 @@ form {
 
 .caixinhaPosicao{
   position: absolute;
-  width: 336px;
-  height: 214px;
-  left: 814px;
-  top: 296px;
+  width: 436px;
+  height: 280px;
+  left: 600px;
+  top: 100px;
 
   background: #D9D9D9;
   border-radius: 60px;
@@ -196,7 +215,7 @@ form {
 
 @media screen and (max-width: 1300px) {
   #inserir_codigo{
-    font-size: 28px;
+    font-size: 10px;
   }
   .posicaoCaixinha{
     position: absolute;

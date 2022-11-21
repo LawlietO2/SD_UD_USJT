@@ -26,6 +26,7 @@ export class ConsultaComponent implements OnInit {
 
   pacienteForm !: FormGroup;
   nome : string = "";
+  especialidade : string = "";
   posicao : string = "";
   id: number = 0;
   dataSource!: MatTableDataSource<any>;
@@ -49,14 +50,16 @@ export class ConsultaComponent implements OnInit {
 
   getPosicaoPaciente(){
     this.id = this.pacienteForm.value.Cod;
+    console.log(this.id )
     this.api.getPosicaoPaciente(this.id)
     .subscribe({
      next: (res) => {
-      this.dataSource = res.result;
 
+      this.dataSource = res.result;
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
       this.nome = res.result.nome;
+      this.especialidade = res.result.especialidade;
       this.posicao = res.result.queueId;
      },
      error: (err) => {

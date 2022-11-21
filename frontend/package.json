@@ -23,6 +23,7 @@
     "crypto-browserify": "^3.12.0",
     "crypto-js": "^4.1.1",
     "file-system": "^2.2.2",
+    "ng2-pdfjs-viewer": "^14.0.0",
     "rxjs": "~7.5.0",
     "stream": "^0.0.2",
     "tslib": "^2.3.0",
