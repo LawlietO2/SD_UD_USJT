@@ -22,7 +22,7 @@ export class ApiService {
   }
 
   getPosicaoPaciente(id : number){
-    let url = "http://localhost:4000/api/paciente/" + id;
+    let url = "http://localhost:3000/api/paciente/" + id;
     return this.http.get<any>(url)
   }
 

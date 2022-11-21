@@ -2,6 +2,14 @@ const db = require('../db');
 const axios = require('axios');
 
 module.exports = {
+    buscarPosicaoPaciente: () =>{
+        return new Promise((aceito, rejeitado) =>{
+            db.query('SELECT * FROM pacientes WHERE status = ?', ['pendente'] , (error, results)=>{
+                if(error){ rejeitado(error); return; }
+                aceito(results);
+            });
+        });
+    },
     buscarTodos: () =>{
         return new Promise((aceito, rejeitado) =>{
             db.query('SELECT * FROM pacientes', (error, results)=>{
