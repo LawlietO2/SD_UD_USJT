@@ -58,13 +58,12 @@
 
 .mat-header-cell {
   color: black;
-  font-style: bold;
   font-size: 1.5em;
 }
 
 .mat-cell {
   color: black;
-  font-size: 1.2em;
+  font-size: 0.8em;
 }
 
 .BalooFont {

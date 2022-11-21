@@ -85,7 +85,6 @@ export class ConsultasEspecialidadesComponent implements OnInit {
  chamarConsulta(){
     this.nome = this.dataList[0].nome;
     this.consulta_cod = this.dataList[0].consulta_cod;
-    //window.location.reload();
     this.atualizarStatusInicioDeAtendimento(this.consulta_cod)
   }
 
