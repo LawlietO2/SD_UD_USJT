@@ -3,6 +3,8 @@ const router = express.Router();
 
 const PacienteController = require('./controllers/PacienteController');
 
+//aqui buscamos a posição de um paciente em uma lista ordenada contendo todos os pacientes pendentes de atendimento
+router.get('/pacientes/:id', PacienteController.buscarPosicaoPaciente);
 //aqui buscamos todos os pacientes cadastrados no db
 router.get('/pacientes', PacienteController.buscarTodos);
 //aqui buscamos apenas um paciente cadastrado no db

@@ -22,9 +22,22 @@ export class ApiService {
   }
 
   getPosicaoPaciente(id : number){
-    console.log("ID na classe API service :" + id)
-    let url = "http://localhost:4000/api/paciente/" + id;
-    console.log(url)
+    let url = "http://localhost:3000/api/paciente/" + id;
+    return this.http.get<any>(url)
+  }
+
+  getConsultasPorEspecialidade(especialidade : string){
+    let url = "http://localhost:7000/api/consultas-especialidade/" + especialidade;
+    return this.http.get<any>(url)
+  }
+
+  atualizarStatusInicioDeAtendimento(cod_consulta : string){
+    let url = "http://localhost:7000/api/fim-consulta/" + cod_consulta;
+    return this.http.get<any>(url)
+  }
+
+  atualizarStatusFimDeAtendimento(cod_consulta : string){
+    let url = "http://localhost:7000/api/inicio-consulta/" + cod_consulta;
     return this.http.get<any>(url)
   }
 

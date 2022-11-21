@@ -47,20 +47,11 @@ export class ConsultaComponent implements OnInit {
 
   }
 
-
-
   getPosicaoPaciente(){
-
     this.id = this.pacienteForm.value.Cod;
-
-
-    console.log(`ID [${this.id}]`);
     this.api.getPosicaoPaciente(this.id)
     .subscribe({
      next: (res) => {
-
-      console.log(res.result);
-
       this.dataSource = res.result;
 
       this.dataSource.paginator = this.paginator;
