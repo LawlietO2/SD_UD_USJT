@@ -1,16 +1,3 @@
-#nomePaciente {
-  position: absolute;
-  top: 5%;
-  left: 190%;
-  transform: translate(-50%);
-  text-align: center;
-  padding: 16px 48px;
-  font-size: 36px;
-  color: black;
-  max-width: max-content;
-}
-
-
 
 #Posicao {
   position: relative;
@@ -29,8 +16,8 @@
   font-size: 64px;
 }
 
-
 #inserir_codigo {
+  font-size: 40px;
   position: relative;
   padding-top: 100px;
   color: rgb(35, 35, 35);
@@ -43,7 +30,6 @@
   top: 30px;
   font-family: 'Roboto';
   font-style: normal;
-  font-weight: 700;
   font-size: 30px;
   color: #000000;
 }
@@ -55,7 +41,6 @@
   top: 30px;
   font-family: 'Roboto';
   font-style: normal;
-  font-weight: 700;
   font-size: 30px;
   color: #000000;
 }
@@ -209,5 +194,55 @@ form {
 
   background: #D9D9D9;
   border-radius: 60px;
+}
 
+@media screen and (max-width: 1300px) {
+  #inserir_codigo{
+    font-size: 28px;
+  }
+  .posicaoCaixinha{
+    position: absolute;
+    left: 360px;
+    top: 60px;
+  }
+  .caixinhaPosicao{
+    top: 230px;
+    left: 108px;
+  }
+  .caixinhaPaciente{
+    top: 500px;
+  }
+  .caixinhaMedico{
+    top: 600px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .caixinhaGrande{
+    left: 15px;
+  }
+  .botaoOK{
+    position: relative;
+    left: 330px;
+  }
+  #inserir_codigo{
+    font-size: 24px;
+  }
+  .posicaoCaixinha{
+    left: 0px;
+    top: 150px;
+  }
+  .caixinhaPosicao{
+    top: 275px;
+    left: 0px;
+  }
+  .caixinhaPaciente{
+    width: 300px;
+    top: 520px;
+    left: 0px;
+  }
+  .caixinhaMedico{
+    top: 620px;
+    left: 0px;
+  }
 }

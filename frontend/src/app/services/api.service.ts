@@ -32,12 +32,12 @@ export class ApiService {
   }
 
   atualizarStatusInicioDeAtendimento(cod_consulta : string){
-    let url = "http://localhost:7000/api/fim-consulta/" + cod_consulta;
+    let url = "http://localhost:7000/api/inicio-consulta/" + cod_consulta;
     return this.http.get<any>(url)
   }
 
   atualizarStatusFimDeAtendimento(cod_consulta : string){
-    let url = "http://localhost:7000/api/inicio-consulta/" + cod_consulta;
+    let url = "http://localhost:7000/api/fim-consulta/" + cod_consulta;
     return this.http.get<any>(url)
   }
 

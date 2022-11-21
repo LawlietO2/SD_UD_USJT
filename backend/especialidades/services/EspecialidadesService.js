@@ -61,9 +61,9 @@ module.exports = {
                 console.error(error);
               });
     },
-    atualizarStatusInicioDeAtendimento: (id) =>{
+    atualizarStatusInicioDeAtendimento: (consulta_cod) =>{
         return new Promise((aceito, rejeitado) =>{
-            db.query('UPDATE pacientes SET estado = \'Em andamento\'  WHERE id = ?', [id] , (error, results)=>{
+            db.query('UPDATE consultas SET status = \'Em andamento\'  WHERE consulta_cod = ?', [consulta_cod] , (error, results)=>{
                 if(error){
                     rejeitado(error); return; }
                 aceito(results);
@@ -71,9 +71,9 @@ module.exports = {
             });
         });
     },
-    atualizarStatusFimDeAtendimento: (id) =>{
+    atualizarStatusFimDeAtendimento: (consulta_cod) =>{
         return new Promise((aceito, rejeitado) =>{
-            db.query('UPDATE pacientes SET estado = \'Finalizado\'  WHERE id = ?', [id] , (error, results)=>{
+            db.query('UPDATE consultas SET status = \'Finalizado\'  WHERE consulta_cod = ?', [consulta_cod] , (error, results)=>{
                 if(error){
                     rejeitado(error); return; }
                 aceito(results);
@@ -86,12 +86,9 @@ module.exports = {
         return new Promise((aceito, rejeitado) =>{
             db.query('SELECT * FROM consultas WHERE especialidade = ?', [especialidade_wrk] , (error, results)=>{
                 if(error){ 
-                    console.log("AQUi")
                     rejeitado(error); return; }
                 if(results.length > 0){
-                    console.log("RESULT")
-                    console.log(results[0])
-                    aceito(results[0]);
+                    aceito(results);
                 }else{
                     aceito(false);
                 }

@@ -43,14 +43,14 @@ module.exports = {
     atualizarStatusInicioDeAtendimento: async (req, res)=>{
         let json = {error:'', result:{}};
 
-        let retorno = await EspecialidadesService.atualizarStatusInicioDeAtendimento(req.params.id);
+        let retorno = await EspecialidadesService.atualizarStatusInicioDeAtendimento(req.params.consulta_cod);
 
         res.json(json);
     },
     atualizarStatusFimDeAtendimento: async (req, res)=>{
         let json = {error:'', result:{}};
 
-        let retorno = await EspecialidadesService.atualizarStatusFimDeAtendimento(req.params.id);
+        let retorno = await EspecialidadesService.atualizarStatusFimDeAtendimento(req.params.consulta_cod);
 
         res.json(json);
     },

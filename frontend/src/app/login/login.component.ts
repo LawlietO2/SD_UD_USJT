@@ -40,6 +40,10 @@ export class LoginComponent implements OnInit {
       .subscribe({
         next:(res)=>{
           if(res.result.status == 1){
+            let especialidade_rsl = res.result.especialidade;
+            if(especialidade_rsl == "Atendente"){
+              this.router.navigate(['lista']);
+            }
             this.status = 1;
             this.router.navigate(['especialidades'],{ queryParams: { especialidade: res.result.especialidade }});
           }

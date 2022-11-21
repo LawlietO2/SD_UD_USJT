@@ -37,10 +37,16 @@ export class ConsultasEspecialidadesComponent implements OnInit {
     this.api.getConsultasPorEspecialidade(this.especialidade)
    .subscribe({
      next: (res) => {
-      console.log("AQUI")
       console.log(res.result);
        this.dataSource = res.result;
+
+
        this.dataList = res.result;
+
+       console.log("DATA LIST")
+       console.log(this.dataList)
+
+
        this.dataSource.paginator = this.paginator;
        this.dataSource.sort = this.sort
      },
@@ -53,17 +59,17 @@ export class ConsultasEspecialidadesComponent implements OnInit {
  chamarConsulta(){
     this.nome = this.dataList[0].nome;
     this.consulta_cod = this.dataList[0].consulta_cod;
-    window.location.reload();
+    //window.location.reload();
+    this.atualizarStatusInicioDeAtendimento(this.consulta_cod)
   }
 
-  atualizarStatusInicioDeAtendimento(){
-    this.api.atualizarStatusInicioDeAtendimento(this.consulta_cod)
+  atualizarStatusInicioDeAtendimento(consulta_cod : string){
+    console.log(`CONSULTA_COD ${consulta_cod}`)
+    this.api.atualizarStatusInicioDeAtendimento(consulta_cod)
    .subscribe({
      next: (res) => {
-       this.dataSource = res.result;
-       this.dataList = res.result;
-       this.dataSource.paginator = this.paginator;
-       this.dataSource.sort = this.sort
+      console.log("RETORNO")
+      console.log(res)
      },
      error: (err) => {
        alert("Error while fetching the Records")
@@ -75,10 +81,7 @@ export class ConsultasEspecialidadesComponent implements OnInit {
     this.api.atualizarStatusFimDeAtendimento(this.consulta_cod)
    .subscribe({
      next: (res) => {
-       this.dataSource = res.result;
-       this.dataList = res.result;
-       this.dataSource.paginator = this.paginator;
-       this.dataSource.sort = this.sort
+        console.log("RETORNO")
      },
      error: (err) => {
        alert("Error while fetching the Records")
