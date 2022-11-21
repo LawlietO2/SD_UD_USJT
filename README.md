@@ -9,7 +9,9 @@ Rodrigo Peluso Craveiro - RA: 820273340 <br>
 Victor Santos e Santos - RA: 820143889
 
 
--------      Barramento      -------
+---------------------------------------------------------------------
 
-Nesta nova versão nos implementamos um barramento de eventos, cuja a finalidade é efetuar a comunicação entre os dois microsserviços existentes, para aumentar a eficiência do sistema, o funcionamento se dá da seguinte maneira: o primeiro microsserviço ao efetuar um cadastro no banco de dados, envia uma mensagem para o segundo microsserviço de fila, que então atualiza a lista de pacientes que tem na memoria cache, para que ao ser consultado pelo front-end o microsserviço de fila, não realize consultas desnecessárias base de dados. 
+Com o tema uma solução computacional para clínica médica, foi desenvolvido alguns microsserviços para soluções práticas do dia a dia da clinica. Para realização desses serviços foram utilizados: Nodejs, Angular, Mysql, Docker e o Github. 
 
+--------------------------DATABASE------------------------------------
+Para criar a database, basta rodar os scripts da pasta database_script no Mysql WorkBench
