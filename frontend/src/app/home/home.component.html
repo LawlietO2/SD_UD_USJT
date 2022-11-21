@@ -8,14 +8,17 @@
 
 <body>
     <nav class="header">
-       <p id="bemVindo" class="BalooFont"> bem vindo ao pegasus </p>
+        <nav id="bemVindo">
+            <p class="BalooFont"> bem vindo ao pegasus </p>
+        </nav>
     </nav>
+
     <p id="description">uma solução computacional para clínica médica</p>
     <p id="acesso">Acesse como:</p>
 
     <span>
         <button id="botao_medico" (click)="submitEntrar()">
-            <p >MÉDICO</p>
+            <p>MÉDICO</p>
         </button>
         <img src="../../assets/img/Bicho_Medico.png" id="bicho_medico">
     </span>
@@ -24,7 +27,7 @@
         <button id="botao_atendente" (click)="submitEntrar()">
             <p class="atendente">ATENDENTE</p>
         </button>>
-       
+
         <img src="../../assets/img/Bicho_Atendente.png" id="bicho_atendente">
     </span>
 
