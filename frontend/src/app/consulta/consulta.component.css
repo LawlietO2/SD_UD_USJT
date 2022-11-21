@@ -132,7 +132,7 @@ form {
 
 .caixinhaCodigo {
   position: absolute;
-  width: 360px;
+  width: 360px !important;
   height: 87px;
   background: #D9D9D9;
   border-radius: 60px;
@@ -145,8 +145,6 @@ form {
   position: absolute;
   left: 550px;
   top: 60px;
-
-
 }
 
 .caixinhaMedico {

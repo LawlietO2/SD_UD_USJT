@@ -2,6 +2,45 @@ const LoginService = require('../services/LoginService');
 const amqp = require('amqplib/callback_api');
 
 module.exports = {
+    verificarLogin: async (req, res)=>{
+        let json = {error:'', result:{}};
+        let especialidade = req.params.especialidade.split('\"').join("");
+        let retorno = await LoginService.verificarLogin(especialidade);
+
+        console.log(retorno)
+
+        if(retorno.logado){
+            json.result = {
+                logado: 1
+            }
+        }
+        else{
+            json.result = {
+                logado: 0
+            }
+        }
+        res.json(json);
+    },
+    setLogin: async (req, res)=>{
+        let json = {error:'', result:{}};
+        let especialidade = req.params.especialidade.split('\"').join("");
+       let retorno = await LoginService.setLogin(especialidade);
+        if(retorno.logado){
+            json.result = {
+                logado: 1
+            }
+        }
+        else{
+            json.result = {
+                logado: 0
+            }
+        }
+        res.json(json);
+    },
+    resetLoginConfigs: async (req, res)=>{
+       await LoginService.resetLoginConfigs();
+
+    },
     VerificarLogin: async (req, res)=>{
         let json = {error:'', result:[]};        
 

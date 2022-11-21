@@ -9,11 +9,13 @@
 
 #FilaTitulo {
   position: absolute;
-  top: 5%;
-  left: 45%;
+  width: 357px;
+  height: 575px;
+  left: 15%;
+  top: 145px;
   font-size: 18px;
-  color: black;
-  max-width: max-content;
+  color: rgb(60, 60, 60);
+  background-color: #D9D9D9;
 }
 
 .linhaFila {
@@ -91,13 +93,13 @@
   left: 40%;
   top: 186px;
 
+
   background: #D9D9D9;
 }
 
 .campo {
   position: absolute;
   width: 742px;
-  height: 330px;
   left: 50px;
   top: 140px;
 
@@ -116,9 +118,9 @@
   position: absolute;
   width: fit-content;
   height: 32px;
-  left: 371px;
+  left: 376px;
   transform: translateX(-50%);
-  top: 370px;
+  top: 500px;
   background: #a08bff;
   border-radius: 21.5px;
   border: none;
@@ -129,13 +131,14 @@
   position: absolute;
   width: fit-content;
   height: 32px;
-  left: 178px;
-  transform: translateX(-50%);
-  top: 510px;
+  left: 15%;
+  transform: translateX(50%);
+  top: 780px;
   background: #a08bff;
   border-radius: 21.5px;
   border: none;
 }
+
 
 .Fila {
   position: absolute;
@@ -143,11 +146,13 @@
   height: 575px;
   left: 15%;
   top: 186px;
-
   background: #D9D9D9;
 }
 
 @media screen and (max-width: 1500px) {
+  #FilaTitulo{
+    left: 15px;
+  }
   .Fila{
     left: 15px;
   }
@@ -164,6 +169,11 @@
     left: 15px;
     width: calc(100% - 30px);
   }
+  #FilaTitulo{
+    left: 15px;
+    width: calc(100% - 30px);
+  }
+
   .campoFila{
     width: calc(100% - 100px);
   }

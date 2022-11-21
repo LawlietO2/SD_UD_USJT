@@ -1,69 +1,59 @@
 <header class="header">
   <h1 class="acompanhamentoTitulo">
-      <span class="BalooFont">acompanhamento </span>
+    <span class="BalooFont">acompanhamento </span>
   </h1>
 </header>
 
 <mat-toolbar>
   <button mat-icon-button class="buttonHeader">
-      <img src="../../assets/img/desenhoHeader.png" class="logoHeader" />
+    <img src="../../assets/img/desenhoHeader.png" class="logoHeader" />
   </button>
   <span class="example-spacer"></span>
 </mat-toolbar>
 
-<table class="Fila">
-  <h1 id="FilaTitulo">
-      <p class="RobotoFont"> <b>Fila</b> </p>
-  </h1>
-  <p class="linhaFila"></p>
-  <div class="campoFila">
-    <article class="container">
-      <article style="margin-top: 10px;">
+<table>
+  <article id="FilaTitulo" style="text-align: center; ">
+    <p style="margin-top: 10px;"> <b>Fila </b> </p>
+  </article>
+  <article class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort class="Fila">
 
-        <article class="mat-elevation-z8">
+      <!-- Coluna Nome -->
+      <ng-container matColumnDef="nome">
+        <th mat-header-cell *matHeaderCellDef class="RobotoFont"> Nome </th>
+        <td mat-cell *matCellDef="let row"> {{row.nome}} </td>
+      </ng-container>
 
-          <table mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="consulta_cod">
+        <th mat-header-cell *matHeaderCellDef class="RobotoFont"> Codigo Consulta </th>
+        <td mat-cell *matCellDef="let row"> {{row.consulta_cod}} </td>
+      </ng-container>
 
-            <!-- Coluna Nome -->
-            <ng-container matColumnDef="nome">
-              <th mat-header-cell *matHeaderCellDef class="RobotoFont"> Nome </th>
-              <td mat-cell *matCellDef="let row"> {{row.nome}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="consulta_cod">
-              <th mat-header-cell *matHeaderCellDef class="RobotoFont"> Codigo Consulta </th>
-              <td mat-cell *matCellDef="let row"> {{row.consulta_cod}} </td>
-            </ng-container>
-
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-
-          </table>
-          <router-outlet></router-outlet>
-        </article>
-      </article>
-    </article>
-  </div>
-  <button class="botaoChamarPaciente" mat-raised-button color="primary">
-      <h1 class="RobotoFont"> Chamar Paciente</h1>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <router-outlet></router-outlet>
+  </article>
+  <button class="botaoChamarPaciente" mat-raised-button color="primary" (click)="chamarConsulta()">
+    <h1 class="RobotoFont"> Chamar Paciente</h1>
   </button>
 </table>
 
-<form class="forms">
+
+
+<form class="forms" [formGroup]="pacienteForm">
   <h1>
-      <p id="Nome" class="RobotoFont">
-          <b> Especialidade: </b> {{especialidade}}
-          <br>
-          <b> Paciente:</b> Mateus
+    <p id="Nome" class="RobotoFont"></p>
+    <b> Especialidade: </b> {{especialidade}}<br><b> Paciente:</b> {{nome}}
   </h1>
   <p class="linhaFicha"></p>
-  <div class="campo"><div>
-  <button class="botaoEncerrarConsulta" mat-raised-button color="primary" >
-      <h1 class="RobotoFont"> Encerrar Consulta </h1>
-   </button>
 
-<form>
+    <input class="campo" formControlName="formsPaciente"  matInput placeholder="Queixas do Paciente">
+
+  <button class="botaoEncerrarConsulta" mat-raised-button color="primary" (click)="atualizarStatusFimDeAtendimento()">
+    <h1 class="RobotoFont"> Encerrar Consulta </h1>
+  </button>
+</form>
 
 
 <router-outlet></router-outlet>

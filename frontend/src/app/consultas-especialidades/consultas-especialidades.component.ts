@@ -3,7 +3,8 @@ import { ApiService } from '../services/api.service';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-consultas-especialidades',
@@ -17,19 +18,45 @@ export class ConsultasEspecialidadesComponent implements OnInit {
   dataList: any;
   displayedColumns: string[] = ['nome', 'consulta_cod'];
   dataSource!: MatTableDataSource<any>;
+  pacienteForm!: FormGroup;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(
     private api : ApiService,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private router: Router,
+    private formBuilder : FormBuilder) {
     this.route.queryParams.subscribe(params => {
-      this.especialidade = params['especialidade'];
+      this.especialidade = params['especialidade'].split('\"').join("");
     });
    }
 
   ngOnInit(): void {
+    this.pacienteForm = this.formBuilder.group({
+      formsPaciente : ['',Validators.required]
+    })
+    if(this.especialidade){
+      this.api.verificarLogin(this.especialidade).subscribe({
+        next: (res) => {
+          console.log(res)
+          let status = res.result.status;
+          if( status == "0"){
+            this.router.navigate(['']);
+            return;
+          }
+        },
+        error: (err) => {
+          alert("Error while fetching the Records")
+        }
+      })
+    }
+    else{
+      this.router.navigate(['']);
+      return;
+    }
+
     this.getConsultasPorEspecialidade();
   }
 
@@ -39,14 +66,7 @@ export class ConsultasEspecialidadesComponent implements OnInit {
      next: (res) => {
       console.log(res.result);
        this.dataSource = res.result;
-
-
        this.dataList = res.result;
-
-       console.log("DATA LIST")
-       console.log(this.dataList)
-
-
        this.dataSource.paginator = this.paginator;
        this.dataSource.sort = this.sort
      },
@@ -64,12 +84,9 @@ export class ConsultasEspecialidadesComponent implements OnInit {
   }
 
   atualizarStatusInicioDeAtendimento(consulta_cod : string){
-    console.log(`CONSULTA_COD ${consulta_cod}`)
     this.api.atualizarStatusInicioDeAtendimento(consulta_cod)
    .subscribe({
      next: (res) => {
-      console.log("RETORNO")
-      console.log(res)
      },
      error: (err) => {
        alert("Error while fetching the Records")
@@ -77,15 +94,35 @@ export class ConsultasEspecialidadesComponent implements OnInit {
    })
   }
 
+  // atualizarStatusFimDeAtendimento(){
+  //   this.api.atualizarStatusFimDeAtendimento(this.consulta_cod)
+  //  .subscribe({
+  //    next: (res) => {
+  //    },
+  //    error: (err) => {
+  //      alert("Error while fetching the Records")
+  //    }
+  //  })
+  // }
   atualizarStatusFimDeAtendimento(){
-    this.api.atualizarStatusFimDeAtendimento(this.consulta_cod)
+    if(this.pacienteForm.valid){
+      let json = {};
+      let queixaPaciente = this.pacienteForm.value.formsPaciente;
+      json = {
+        consulta_cod: this.consulta_cod,
+        queixa: queixaPaciente
+      };
+
+    this.api.atualizarStatusFimDeAtendimento(json)
    .subscribe({
      next: (res) => {
-        console.log("RETORNO")
+        console.log(res.result)
      },
      error: (err) => {
        alert("Error while fetching the Records")
      }
    })
   }
+  window.location.reload();
+}
 }

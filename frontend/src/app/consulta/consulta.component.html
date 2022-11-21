@@ -18,11 +18,11 @@
     <p> <b>insira o código de consulta: </b></p>
   </span>
 
-  <div class="posicaoCaixinha">
+  <article class="posicaoCaixinha">
     <form [formGroup]="pacienteForm" style="border: 0;" >
-        <input formControlName="Cod" matInput placeholder="Ex. AL1Cr0UHrK" class="caixinhaCodigo" >
+        <input style="width: 360px;" formControlName="Cod" matInput placeholder="Ex. AL1Cr0UHrK" class="caixinhaCodigo" >
     </form>
-  </div>
+  </article>
 
 
   <button class="botaoOK" mat-dialog-close (click)="getPosicaoPaciente()"> <b> OK </b></button>

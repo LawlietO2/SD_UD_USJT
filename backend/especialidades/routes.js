@@ -6,7 +6,7 @@ const EspecialidadesController = require('./controllers/EspecialidadesController
 //Redirecionamento do barramento apos inclusao de paciente, devemos incluir na base de especialidades.
 router.post('/eventos', EspecialidadesController.receberEvento);
 router.get('/inicio-consulta/:consulta_cod', EspecialidadesController.atualizarStatusInicioDeAtendimento);
-router.get('/fim-consulta/:consulta_cod', EspecialidadesController.atualizarStatusFimDeAtendimento);
+router.post('/fim-consulta', EspecialidadesController.atualizarStatusFimDeAtendimento);
 router.get('/consultas-especialidade/:especialidade', EspecialidadesController.getConsultasPorEspecialidade);
 
 module.exports = router;

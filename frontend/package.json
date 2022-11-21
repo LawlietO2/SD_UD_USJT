@@ -22,6 +22,7 @@
     "@angular/router": "^14.2.0",
     "crypto-browserify": "^3.12.0",
     "crypto-js": "^4.1.1",
+    "file-system": "^2.2.2",
     "rxjs": "~7.5.0",
     "stream": "^0.0.2",
     "tslib": "^2.3.0",

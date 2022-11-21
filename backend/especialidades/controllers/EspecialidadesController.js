@@ -49,8 +49,7 @@ module.exports = {
     },
     atualizarStatusFimDeAtendimento: async (req, res)=>{
         let json = {error:'', result:{}};
-
-        let retorno = await EspecialidadesService.atualizarStatusFimDeAtendimento(req.params.consulta_cod);
+        let retorno = await EspecialidadesService.atualizarStatusFimDeAtendimento(req.body.queixa, req.body.consulta_cod);
 
         res.json(json);
     },

@@ -5,6 +5,7 @@ import { ApiService } from '../services/api.service';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import { ActivatedRoute, Router } from '@angular/router';
 
 export interface pacientes {
   nome: string;
@@ -26,6 +27,7 @@ const ELEMENT_DATA: pacientes[] = [
 
 export class ListaComponent implements OnInit {
   title = 'interface';
+  especialidade : string = "";
   displayedColumns: string[] = ['nome', 'prioridade', 'especialidade', 'consulta_cod'];
   dataSource!: MatTableDataSource<any>;
 
@@ -34,11 +36,37 @@ export class ListaComponent implements OnInit {
 
   constructor(
     private dialog : MatDialog,
-    private api : ApiService
+    private api : ApiService,
+    private router: Router,
+    private route: ActivatedRoute
     ){
+
+      this.route.queryParams.subscribe(params => {
+        this.especialidade = params['especialidade'];
+      });
 
   }
   ngOnInit(): void {
+    if(this.especialidade){
+      this.api.verificarLogin(this.especialidade).subscribe({
+        next: (res) => {
+          console.log(res)
+          let status = res.result.status;
+          if( status == "0"){
+            this.router.navigate(['']);
+            return;
+          }
+        },
+        error: (err) => {
+          alert("Error while fetching the Records")
+        }
+      })
+    }
+    else{
+      this.router.navigate(['']);
+      return;
+    }
+
     this.getPacientes();
   }
 
@@ -47,6 +75,10 @@ export class ListaComponent implements OnInit {
       width: '30%'
     });
   }
+
+  gotoConsultaPosicao(){
+    this.router.navigate(['consulta']);
+   }
 
   getPacientes(){
      this.api.getPacientes()

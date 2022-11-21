@@ -39,13 +39,27 @@ export class LoginComponent implements OnInit {
       this.api.login(json)
       .subscribe({
         next:(res)=>{
+          console.log(res)
           if(res.result.status == 1){
             let especialidade_rsl = res.result.especialidade;
-            if(especialidade_rsl == "Atendente"){
-              this.router.navigate(['lista']);
-            }
             this.status = 1;
-            this.router.navigate(['especialidades'],{ queryParams: { especialidade: res.result.especialidade }});
+
+            this.api.setLogin(res.result.especialidade).subscribe({
+              next: (res) => {
+               console.log(res);
+              },
+              error: (err) => {
+                alert("Error while fetching the Records")
+              }
+            })
+
+            if(especialidade_rsl == "Atendente"){
+              this.router.navigate(['lista'], { queryParams: { especialidade: res.result.especialidade}});
+
+            }
+            else{
+              this.router.navigate(['especialidades'],{ queryParams: { especialidade: "\"" + res.result.especialidade + "\""}});
+            }
           }
           else
             this.status = 2;

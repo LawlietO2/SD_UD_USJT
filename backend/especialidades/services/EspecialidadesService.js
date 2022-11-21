@@ -71,9 +71,9 @@ module.exports = {
             });
         });
     },
-    atualizarStatusFimDeAtendimento: (consulta_cod) =>{
+    atualizarStatusFimDeAtendimento: (queixa, consulta_cod) =>{
         return new Promise((aceito, rejeitado) =>{
-            db.query('UPDATE consultas SET status = \'Finalizado\'  WHERE consulta_cod = ?', [consulta_cod] , (error, results)=>{
+            db.query('UPDATE consultas SET status = \'Finalizado\', informacoes_paciente = ?  WHERE consulta_cod = ?', [queixa, consulta_cod] , (error, results)=>{
                 if(error){
                     rejeitado(error); return; }
                 aceito(results);
