@@ -12,7 +12,7 @@
   width: 357px;
   height: 615px;
   left: 15%;
-  top: 145px;
+  top: 250px;
   font-size: 18px;
   border-radius: 21.5px;
   background-color: #D9D9D9
@@ -101,7 +101,7 @@
   width: 848px;
   height: 616px;
   left: 35%;
-  top: 146px;
+  top: 250px;
   border-radius: 21.5px;
   background: #D9D9D9;
 }
@@ -110,8 +110,8 @@
   position: absolute;
   /* width: 848px; */
   /* height: 616px; */
-  left: 36%;
-  top: 160px;
+  left: 50px;
+  top: 10px;
 
 }
 
@@ -119,7 +119,7 @@
   position: absolute;
   width: 742px;
   left: 50px;
-  top: 140px;
+  top: 200px;
   height: 300px;
   border-radius: 21.5px;
   background: #FFFFFF;
@@ -130,16 +130,16 @@
   width: 257px;
   height: 330px;
   left: 50px;
-  top: 140px;
+  top: 250px;
 }
 
 .botaoEncerrarConsulta {
   position: absolute;
   width: fit-content;
   height: 32px;
-  left: 110px;
+  left: 130px;
   transform: translateX(-50%);
-  top: 500px;
+  top: 530px;
   border-radius: 21.5px;
   background: #a08bff;
   border: none;
@@ -152,7 +152,7 @@
   height: 32px;
   right: 250px;
   transform: translateX(50%);
-  top: 560px;
+  top: 530px;
   background: #a08bff;
   border-radius: 21.5px;
   border: none;
@@ -162,9 +162,9 @@
   position: absolute;
   width: fit-content;
   height: 34px;
-  left: 180px;
+  left: 0px;
   transform: translateX(50%);
-  top: 560px;
+  top: 530px;
   border-radius: 21.5px;
   background: #a08bff;
   border: none;
@@ -175,7 +175,7 @@
   position: absolute;
   width: 355px;
   left: 0px;
-  top: 50px;
+  top: 150px;
   border-radius: 21.5px;
   background: #D9D9D9;
 }
@@ -214,7 +214,7 @@
   .forms{
     left: 15px;
     width: calc(100% - 30px);
-    top: 800px;
+    top: 900px;
   }
   .linhaFicha{
     width: calc(100% - 10px);
